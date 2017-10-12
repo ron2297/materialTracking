@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo/css")
+    @Styles.Render("~/Content/Bundled/BBBcss")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Bundled/BBBjs")
+
+    @RenderSection("scriptsTop", required: false)
+
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="BBBody ">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("scriptsBottom", required: false)
+
+
+</body>
+</html>

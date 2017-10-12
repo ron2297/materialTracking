@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69ac03ad247c4c3081e545cd6e88b737" Name="Diagram1">
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.AssemblyItem" Width="1.5" PointX="3.75" PointY="21.25" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.AssemblyItemProduct" Width="1.5" PointX="6" PointY="14.125" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Inventory" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Location" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.OrderDetail" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.OrderRequest" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.OrderStatu" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.POOrder" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.POOrderDetail" Width="1.5" PointX="7.5" PointY="7.625" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Product" Width="1.5" PointX="0.75" PointY="14" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Shipper" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.ShippingItem" Width="1.5" PointX="5.25" PointY="17.375" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.ShippingOrder" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Vendor" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.VendorProductXRef" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.Zone" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="MaterialTrackingDBModel.ZoneType" Width="1.5" PointX="1.5" PointY="20.375" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_AssemblyItemProduct_AssemblyItem" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_AssemblyItemProduct_Product" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_Inventory_Product" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_Inventory_Zone" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_OrderDetail_Inventory" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_ShippingItems_Inventory" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_ShippingOrder_Location" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_OrderDetail_OrderRequest" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_OrderDetail_Vendor" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_POOrderDetail_OrderDetail" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_OrderRequest_OrderStatus" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_POOrder_OrderRequest" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_POOrder_OrderStatus" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_POOrderDetail_OrderStatus" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_ShippingOrder_OrderStatus" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_POOrderDetail_POOrder" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_VendorProductXRef_Product" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_ShippingOrder_Shipper" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_ShippingItems_Zone" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_VendorProductXRef_Vendor" />
+        <AssociationConnector Association="MaterialTrackingDBModel.FK_Zone_ZoneType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
