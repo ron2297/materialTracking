@@ -1,0 +1,54 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Zone Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<Zone>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.ZoneID).Visible(true);
+              columns.Bound(a => a.ZoneTypeID);
+              columns.Bound(a => a.Name);
+              //columns.Bound(a => a.ItemNumber).Title("ItemNumber");
+              //columns.Bound(a => a.AddressLine1).Visible(false);
+              //columns.Bound(a => a.AddressLine2).Visible(false);
+              //columns.Bound(a => a.City).Visible(false);
+              //columns.Bound(a => a.State).Visible(false);
+              //columns.Bound(a => a.Zip).Visible(false);
+              //columns.Bound(a => a.ContactName).Title("Contact Name");
+              // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
+              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.ZoneID);
+              })
+              .Read(read => read.Action("ZoneSelectAll", "Zone"))
+              .Update(update => update.Action("ZoneUpdate", "Zone"))
+              .Create(create => create.Action("ZoneCreate", "Zone"))
+              .Destroy(destroy => destroy.Action("ZoneDestroy", "Zone")))
+          )
+
+    <br />
+    @Html.ActionLink("Zone Type", "Index", "ZoneType")
+
+</div>

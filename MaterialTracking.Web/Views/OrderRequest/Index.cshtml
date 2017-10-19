@@ -1,0 +1,41 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Product Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<OrderRequest>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.OrderRequestID);
+              columns.Bound(a => a.DateOrdered);
+              columns.Bound(a => a.OrderStatusID);
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.OrderRequestID);
+              })
+              .Read(read => read.Action("OrderRequestSelectAll", "OrderRequest"))
+              .Update(update => update.Action("OrderRequestUpdate", "OrderRequest"))
+              .Create(create => create.Action("OrderRequestCreate", "OrderRequest"))
+              .Destroy(destroy => destroy.Action("OrderRequestDestroy", "OrderRequest")))
+          )
+</div>

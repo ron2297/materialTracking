@@ -1,0 +1,44 @@
+﻿@using MaterialTracking.Types
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    ViewBag.Title = "Product Order Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<POOrder>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.POOrderID).Visible(true);
+              columns.Bound(a => a.OrderRequestID).Visible(true);
+              columns.Bound(a => a.OrderStatusID).Visible(true);
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.POOrderID);
+              })
+              .Read(read => read.Action("POOrderSelectAll", "POOrder"))
+              .Update(update => update.Action("POOrderUpdate", "POOrder"))
+              .Create(create => create.Action("POOrderCreate", "POOrder"))
+              .Destroy(destroy => destroy.Action("POOrderDestroy", "POOrder")))
+    )
+</div>
+
