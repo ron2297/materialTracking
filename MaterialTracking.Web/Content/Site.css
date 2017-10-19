@@ -1,0 +1,25 @@
+﻿body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+    margin-right: 17px;
+}
+
+
+.BBBody {
+    margin-top: 10px;
+    min-height: 500px;
+    background-color: oldlace;
+    padding: 8px 8px 8px 8px;
+    border: solid 2px steelblue;
+    /*boxshadow*/
+    -moz-box-shadow: 3px 3px 5px #535353;
+    -webkit-box-shadow: 3px 3px 5px #535353;
+    box-shadow: 3px 3px 5px #535353;
+    /*roundbox*/
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+

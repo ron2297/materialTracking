@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBS.Repository", "BBS.Repository\BBS.Repository.csproj", "{6F3CD444-295D-4E68-9A2A-5C66C514FCB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialTracking.Types", "MaterialTracking.Types\MaterialTracking.Types.csproj", "{44F98AD5-5A22-4BE3-AFF5-F0DD3DCB581A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialTracking.BL", "MaterialTracking.BL\MaterialTracking.BL.csproj", "{5151AE49-285F-4179-B0D9-6C92C8D4674A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialTracking.Web", "MaterialTracking.Web\MaterialTracking.Web.csproj", "{043DFD92-C020-40AD-89A0-F30C0D4479E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F3CD444-295D-4E68-9A2A-5C66C514FCB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F3CD444-295D-4E68-9A2A-5C66C514FCB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F3CD444-295D-4E68-9A2A-5C66C514FCB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F3CD444-295D-4E68-9A2A-5C66C514FCB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F98AD5-5A22-4BE3-AFF5-F0DD3DCB581A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F98AD5-5A22-4BE3-AFF5-F0DD3DCB581A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F98AD5-5A22-4BE3-AFF5-F0DD3DCB581A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F98AD5-5A22-4BE3-AFF5-F0DD3DCB581A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5151AE49-285F-4179-B0D9-6C92C8D4674A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5151AE49-285F-4179-B0D9-6C92C8D4674A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5151AE49-285F-4179-B0D9-6C92C8D4674A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5151AE49-285F-4179-B0D9-6C92C8D4674A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{043DFD92-C020-40AD-89A0-F30C0D4479E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{043DFD92-C020-40AD-89A0-F30C0D4479E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{043DFD92-C020-40AD-89A0-F30C0D4479E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{043DFD92-C020-40AD-89A0-F30C0D4479E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B7CA02C-55A0-4FD7-8EC2-79F3B3A467DC}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://blackbatsoftware.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BBS.Repository\\BBS.Repository.csproj
+		SccProjectName1 = BBS.Repository
+		SccLocalPath1 = BBS.Repository
+		SccProjectUniqueName2 = MaterialTracking.BL\\MaterialTracking.BL.csproj
+		SccProjectName2 = MaterialTracking.BL
+		SccLocalPath2 = MaterialTracking.BL
+		SccProjectUniqueName3 = MaterialTracking.Types\\MaterialTracking.Types.csproj
+		SccProjectName3 = MaterialTracking.Types
+		SccLocalPath3 = MaterialTracking.Types
+		SccProjectUniqueName4 = MaterialTracking.Web\\MaterialTracking.Web.csproj
+		SccProjectName4 = MaterialTracking.Web
+		SccLocalPath4 = MaterialTracking.Web
+	EndGlobalSection
+EndGlobal

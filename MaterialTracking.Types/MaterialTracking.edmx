@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MaterialTrackingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssemblyItem">
+          <Key>
+            <PropertyRef Name="AssemblyItemID" />
+          </Key>
+          <Property Name="AssemblyItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssemblyItemProduct">
+          <Key>
+            <PropertyRef Name="AssemblyItemID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="AssemblyItemID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="InventoryID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ZoneID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderRequestID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="InventoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderRequest">
+          <Key>
+            <PropertyRef Name="OrderRequestID" />
+          </Key>
+          <Property Name="OrderRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOrdered" Type="datetime" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderStatusID" />
+          </Key>
+          <Property Name="OrderStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POOrder">
+          <Key>
+            <PropertyRef Name="POOrderID" />
+          </Key>
+          <Property Name="POOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderRequestID" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POOrderDetail">
+          <Key>
+            <PropertyRef Name="POOrderDetailID" />
+          </Key>
+          <Property Name="POOrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POOrderID" Type="int" Nullable="false" />
+          <Property Name="OrderDetailID" Type="int" Nullable="false" />
+          <Property Name="PONumber" Type="varchar" MaxLength="50" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ItemNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingItems">
+          <Key>
+            <PropertyRef Name="ShippingOrderID" />
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="ShippingOrderID" Type="int" Nullable="false" />
+          <Property Name="InventoryID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PickupZoneID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingOrder">
+          <Key>
+            <PropertyRef Name="ShippingOrderID" />
+          </Key>
+          <Property Name="ShippingOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipperID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="DateShipped" Type="datetime" Nullable="false" />
+          <Property Name="DateEstimatedArrival" Type="datetime" Nullable="false" />
+          <Property Name="DateArrived" Type="datetime" />
+          <Property Name="OrderStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="10" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendorProductXRef">
+          <Key>
+            <PropertyRef Name="VendorID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="VendorID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneID" />
+          </Key>
+          <Property Name="ZoneID" Type="int" Nullable="false" />
+          <Property Name="ZoneTypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZoneType">
+          <Key>
+            <PropertyRef Name="ZoneTypeID" />
+          </Key>
+          <Property Name="ZoneTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AssemblyItemProduct_AssemblyItem">
+          <End Role="AssemblyItem" Type="Self.AssemblyItem" Multiplicity="1" />
+          <End Role="AssemblyItemProduct" Type="Self.AssemblyItemProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssemblyItem">
+              <PropertyRef Name="AssemblyItemID" />
+            </Principal>
+            <Dependent Role="AssemblyItemProduct">
+              <PropertyRef Name="AssemblyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssemblyItemProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="AssemblyItemProduct" Type="Self.AssemblyItemProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="AssemblyItemProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Zone">
+          <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="InventoryID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_OrderRequest">
+          <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRequest">
+              <PropertyRef Name="OrderRequestID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequest_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrder_OrderRequest">
+          <End Role="OrderRequest" Type="Self.OrderRequest" Multiplicity="1" />
+          <End Role="POOrder" Type="Self.POOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRequest">
+              <PropertyRef Name="OrderRequestID" />
+            </Principal>
+            <Dependent Role="POOrder">
+              <PropertyRef Name="OrderRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="POOrder" Type="Self.POOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="POOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_OrderDetail">
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="1" />
+          <End Role="POOrderDetail" Type="Self.POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetail">
+              <PropertyRef Name="OrderDetailID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="OrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="POOrderDetail" Type="Self.POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_POOrder">
+          <End Role="POOrder" Type="Self.POOrder" Multiplicity="1" />
+          <End Role="POOrderDetail" Type="Self.POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POOrder">
+              <PropertyRef Name="POOrderID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="POOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingItems_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+          <End Role="ShippingItems" Type="Self.ShippingItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="InventoryID" />
+            </Principal>
+            <Dependent Role="ShippingItems">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingItems_Zone">
+          <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
+          <End Role="ShippingItems" Type="Self.ShippingItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="ShippingItems">
+              <PropertyRef Name="PickupZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="ShippingOrder" Type="Self.ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="ShippingOrder" Type="Self.ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_Shipper">
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="1" />
+          <End Role="ShippingOrder" Type="Self.ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="ShipperID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="ShipperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProductXRef_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="VendorProductXRef" Type="Self.VendorProductXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="VendorProductXRef">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProductXRef_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="VendorProductXRef" Type="Self.VendorProductXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="VendorProductXRef">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zone_ZoneType">
+          <End Role="ZoneType" Type="Self.ZoneType" Multiplicity="1" />
+          <End Role="Zone" Type="Self.Zone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZoneType">
+              <PropertyRef Name="ZoneTypeID" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MaterialTrackingDBModelStoreContainer">
+          <EntitySet Name="AssemblyItem" EntityType="Self.AssemblyItem" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="AssemblyItemProduct" EntityType="Self.AssemblyItemProduct" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="OrderRequest" EntityType="Self.OrderRequest" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="POOrder" EntityType="Self.POOrder" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="POOrderDetail" EntityType="Self.POOrderDetail" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Shipper" EntityType="Self.Shipper" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="ShippingItems" EntityType="Self.ShippingItems" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="ShippingOrder" EntityType="Self.ShippingOrder" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="VendorProductXRef" EntityType="Self.VendorProductXRef" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="Zone" EntityType="Self.Zone" Schema="MT" store:Type="Tables" />
+          <EntitySet Name="ZoneType" EntityType="Self.ZoneType" Schema="MT" store:Type="Tables" />
+          <AssociationSet Name="FK_AssemblyItemProduct_AssemblyItem" Association="Self.FK_AssemblyItemProduct_AssemblyItem">
+            <End Role="AssemblyItem" EntitySet="AssemblyItem" />
+            <End Role="AssemblyItemProduct" EntitySet="AssemblyItemProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssemblyItemProduct_Product" Association="Self.FK_AssemblyItemProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="AssemblyItemProduct" EntitySet="AssemblyItemProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Product" Association="Self.FK_Inventory_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Zone" Association="Self.FK_Inventory_Zone">
+            <End Role="Zone" EntitySet="Zone" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Inventory" Association="Self.FK_OrderDetail_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_OrderRequest" Association="Self.FK_OrderDetail_OrderRequest">
+            <End Role="OrderRequest" EntitySet="OrderRequest" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Vendor" Association="Self.FK_OrderDetail_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequest_OrderStatus" Association="Self.FK_OrderRequest_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="OrderRequest" EntitySet="OrderRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrder_OrderRequest" Association="Self.FK_POOrder_OrderRequest">
+            <End Role="OrderRequest" EntitySet="OrderRequest" />
+            <End Role="POOrder" EntitySet="POOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrder_OrderStatus" Association="Self.FK_POOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="POOrder" EntitySet="POOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_OrderDetail" Association="Self.FK_POOrderDetail_OrderDetail">
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_OrderStatus" Association="Self.FK_POOrderDetail_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_POOrder" Association="Self.FK_POOrderDetail_POOrder">
+            <End Role="POOrder" EntitySet="POOrder" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingItems_Inventory" Association="Self.FK_ShippingItems_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="ShippingItems" EntitySet="ShippingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingItems_Zone" Association="Self.FK_ShippingItems_Zone">
+            <End Role="Zone" EntitySet="Zone" />
+            <End Role="ShippingItems" EntitySet="ShippingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_Location" Association="Self.FK_ShippingOrder_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_OrderStatus" Association="Self.FK_ShippingOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_Shipper" Association="Self.FK_ShippingOrder_Shipper">
+            <End Role="Shipper" EntitySet="Shipper" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProductXRef_Product" Association="Self.FK_VendorProductXRef_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="VendorProductXRef" EntitySet="VendorProductXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProductXRef_Vendor" Association="Self.FK_VendorProductXRef_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="VendorProductXRef" EntitySet="VendorProductXRef" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zone_ZoneType" Association="Self.FK_Zone_ZoneType">
+            <End Role="ZoneType" EntitySet="ZoneType" />
+            <End Role="Zone" EntitySet="Zone" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MaterialTrackingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MaterialTrackingDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssemblyItems" EntityType="MaterialTrackingDBModel.AssemblyItem" />
+          <EntitySet Name="AssemblyItemProducts" EntityType="MaterialTrackingDBModel.AssemblyItemProduct" />
+          <EntitySet Name="Inventories" EntityType="MaterialTrackingDBModel.Inventory" />
+          <EntitySet Name="Locations" EntityType="MaterialTrackingDBModel.Location" />
+          <EntitySet Name="OrderDetails" EntityType="MaterialTrackingDBModel.OrderDetail" />
+          <EntitySet Name="OrderRequests" EntityType="MaterialTrackingDBModel.OrderRequest" />
+          <EntitySet Name="OrderStatus" EntityType="MaterialTrackingDBModel.OrderStatu" />
+          <EntitySet Name="POOrders" EntityType="MaterialTrackingDBModel.POOrder" />
+          <EntitySet Name="POOrderDetails" EntityType="MaterialTrackingDBModel.POOrderDetail" />
+          <EntitySet Name="Products" EntityType="MaterialTrackingDBModel.Product" />
+          <EntitySet Name="Shippers" EntityType="MaterialTrackingDBModel.Shipper" />
+          <EntitySet Name="ShippingItems" EntityType="MaterialTrackingDBModel.ShippingItem" />
+          <EntitySet Name="ShippingOrders" EntityType="MaterialTrackingDBModel.ShippingOrder" />
+          <EntitySet Name="Vendors" EntityType="MaterialTrackingDBModel.Vendor" />
+          <EntitySet Name="VendorProductXRefs" EntityType="MaterialTrackingDBModel.VendorProductXRef" />
+          <EntitySet Name="Zones" EntityType="MaterialTrackingDBModel.Zone" />
+          <EntitySet Name="ZoneTypes" EntityType="MaterialTrackingDBModel.ZoneType" />
+          <AssociationSet Name="FK_AssemblyItemProduct_AssemblyItem" Association="MaterialTrackingDBModel.FK_AssemblyItemProduct_AssemblyItem">
+            <End Role="AssemblyItem" EntitySet="AssemblyItems" />
+            <End Role="AssemblyItemProduct" EntitySet="AssemblyItemProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssemblyItemProduct_Product" Association="MaterialTrackingDBModel.FK_AssemblyItemProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="AssemblyItemProduct" EntitySet="AssemblyItemProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Product" Association="MaterialTrackingDBModel.FK_Inventory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Zone" Association="MaterialTrackingDBModel.FK_Inventory_Zone">
+            <End Role="Zone" EntitySet="Zones" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Inventory" Association="MaterialTrackingDBModel.FK_OrderDetail_Inventory">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingItems_Inventory" Association="MaterialTrackingDBModel.FK_ShippingItems_Inventory">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="ShippingItem" EntitySet="ShippingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_Location" Association="MaterialTrackingDBModel.FK_ShippingOrder_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_OrderRequest" Association="MaterialTrackingDBModel.FK_OrderDetail_OrderRequest">
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Vendor" Association="MaterialTrackingDBModel.FK_OrderDetail_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_OrderDetail" Association="MaterialTrackingDBModel.FK_POOrderDetail_OrderDetail">
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequest_OrderStatus" Association="MaterialTrackingDBModel.FK_OrderRequest_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrder_OrderRequest" Association="MaterialTrackingDBModel.FK_POOrder_OrderRequest">
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+            <End Role="POOrder" EntitySet="POOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrder_OrderStatus" Association="MaterialTrackingDBModel.FK_POOrder_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="POOrder" EntitySet="POOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_OrderStatus" Association="MaterialTrackingDBModel.FK_POOrderDetail_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_OrderStatus" Association="MaterialTrackingDBModel.FK_ShippingOrder_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POOrderDetail_POOrder" Association="MaterialTrackingDBModel.FK_POOrderDetail_POOrder">
+            <End Role="POOrder" EntitySet="POOrders" />
+            <End Role="POOrderDetail" EntitySet="POOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProductXRef_Product" Association="MaterialTrackingDBModel.FK_VendorProductXRef_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="VendorProductXRef" EntitySet="VendorProductXRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingOrder_Shipper" Association="MaterialTrackingDBModel.FK_ShippingOrder_Shipper">
+            <End Role="Shipper" EntitySet="Shippers" />
+            <End Role="ShippingOrder" EntitySet="ShippingOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingItems_Zone" Association="MaterialTrackingDBModel.FK_ShippingItems_Zone">
+            <End Role="Zone" EntitySet="Zones" />
+            <End Role="ShippingItem" EntitySet="ShippingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProductXRef_Vendor" Association="MaterialTrackingDBModel.FK_VendorProductXRef_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="VendorProductXRef" EntitySet="VendorProductXRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zone_ZoneType" Association="MaterialTrackingDBModel.FK_Zone_ZoneType">
+            <End Role="ZoneType" EntitySet="ZoneTypes" />
+            <End Role="Zone" EntitySet="Zones" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AssemblyItem">
+          <Key>
+            <PropertyRef Name="AssemblyItemID" />
+          </Key>
+          <Property Name="AssemblyItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AssemblyItemProducts" Relationship="MaterialTrackingDBModel.FK_AssemblyItemProduct_AssemblyItem" FromRole="AssemblyItem" ToRole="AssemblyItemProduct" />
+        </EntityType>
+        <EntityType Name="AssemblyItemProduct">
+          <Key>
+            <PropertyRef Name="AssemblyItemID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="AssemblyItemID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AssemblyItem" Relationship="MaterialTrackingDBModel.FK_AssemblyItemProduct_AssemblyItem" FromRole="AssemblyItemProduct" ToRole="AssemblyItem" />
+          <NavigationProperty Name="Product" Relationship="MaterialTrackingDBModel.FK_AssemblyItemProduct_Product" FromRole="AssemblyItemProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="InventoryID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ZoneID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MaterialTrackingDBModel.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
+          <NavigationProperty Name="Zone" Relationship="MaterialTrackingDBModel.FK_Inventory_Zone" FromRole="Inventory" ToRole="Zone" />
+          <NavigationProperty Name="OrderDetails" Relationship="MaterialTrackingDBModel.FK_OrderDetail_Inventory" FromRole="Inventory" ToRole="OrderDetail" />
+          <NavigationProperty Name="ShippingItems" Relationship="MaterialTrackingDBModel.FK_ShippingItems_Inventory" FromRole="Inventory" ToRole="ShippingItem" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ShippingOrders" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_Location" FromRole="Location" ToRole="ShippingOrder" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderRequestID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="InventoryID" Type="Int32" />
+          <NavigationProperty Name="Inventory" Relationship="MaterialTrackingDBModel.FK_OrderDetail_Inventory" FromRole="OrderDetail" ToRole="Inventory" />
+          <NavigationProperty Name="OrderRequest" Relationship="MaterialTrackingDBModel.FK_OrderDetail_OrderRequest" FromRole="OrderDetail" ToRole="OrderRequest" />
+          <NavigationProperty Name="Vendor" Relationship="MaterialTrackingDBModel.FK_OrderDetail_Vendor" FromRole="OrderDetail" ToRole="Vendor" />
+          <NavigationProperty Name="POOrderDetails" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_OrderDetail" FromRole="OrderDetail" ToRole="POOrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderRequest">
+          <Key>
+            <PropertyRef Name="OrderRequestID" />
+          </Key>
+          <Property Name="OrderRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="MaterialTrackingDBModel.FK_OrderDetail_OrderRequest" FromRole="OrderRequest" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderStatu" Relationship="MaterialTrackingDBModel.FK_OrderRequest_OrderStatus" FromRole="OrderRequest" ToRole="OrderStatu" />
+          <NavigationProperty Name="POOrders" Relationship="MaterialTrackingDBModel.FK_POOrder_OrderRequest" FromRole="OrderRequest" ToRole="POOrder" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="OrderStatusID" />
+          </Key>
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderRequests" Relationship="MaterialTrackingDBModel.FK_OrderRequest_OrderStatus" FromRole="OrderStatu" ToRole="OrderRequest" />
+          <NavigationProperty Name="POOrders" Relationship="MaterialTrackingDBModel.FK_POOrder_OrderStatus" FromRole="OrderStatu" ToRole="POOrder" />
+          <NavigationProperty Name="POOrderDetails" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_OrderStatus" FromRole="OrderStatu" ToRole="POOrderDetail" />
+          <NavigationProperty Name="ShippingOrders" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_OrderStatus" FromRole="OrderStatu" ToRole="ShippingOrder" />
+        </EntityType>
+        <EntityType Name="POOrder">
+          <Key>
+            <PropertyRef Name="POOrderID" />
+          </Key>
+          <Property Name="POOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderRequestID" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderRequest" Relationship="MaterialTrackingDBModel.FK_POOrder_OrderRequest" FromRole="POOrder" ToRole="OrderRequest" />
+          <NavigationProperty Name="OrderStatu" Relationship="MaterialTrackingDBModel.FK_POOrder_OrderStatus" FromRole="POOrder" ToRole="OrderStatu" />
+          <NavigationProperty Name="POOrderDetails" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_POOrder" FromRole="POOrder" ToRole="POOrderDetail" />
+        </EntityType>
+        <EntityType Name="POOrderDetail">
+          <Key>
+            <PropertyRef Name="POOrderDetailID" />
+          </Key>
+          <Property Name="POOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POOrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
+          <Property Name="PONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetail" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_OrderDetail" FromRole="POOrderDetail" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderStatu" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_OrderStatus" FromRole="POOrderDetail" ToRole="OrderStatu" />
+          <NavigationProperty Name="POOrder" Relationship="MaterialTrackingDBModel.FK_POOrderDetail_POOrder" FromRole="POOrderDetail" ToRole="POOrder" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ItemNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AssemblyItemProducts" Relationship="MaterialTrackingDBModel.FK_AssemblyItemProduct_Product" FromRole="Product" ToRole="AssemblyItemProduct" />
+          <NavigationProperty Name="Inventories" Relationship="MaterialTrackingDBModel.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ShippingOrders" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_Shipper" FromRole="Shipper" ToRole="ShippingOrder" />
+        </EntityType>
+        <EntityType Name="ShippingItem">
+          <Key>
+            <PropertyRef Name="ShippingOrderID" />
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="ShippingOrderID" Type="Int32" Nullable="false" />
+          <Property Name="InventoryID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PickupZoneID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="MaterialTrackingDBModel.FK_ShippingItems_Inventory" FromRole="ShippingItem" ToRole="Inventory" />
+          <NavigationProperty Name="Zone" Relationship="MaterialTrackingDBModel.FK_ShippingItems_Zone" FromRole="ShippingItem" ToRole="Zone" />
+        </EntityType>
+        <EntityType Name="ShippingOrder">
+          <Key>
+            <PropertyRef Name="ShippingOrderID" />
+          </Key>
+          <Property Name="ShipperID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="DateShipped" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEstimatedArrival" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateArrived" Type="DateTime" Precision="3" />
+          <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_Location" FromRole="ShippingOrder" ToRole="Location" />
+          <NavigationProperty Name="OrderStatu" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_OrderStatus" FromRole="ShippingOrder" ToRole="OrderStatu" />
+          <NavigationProperty Name="Shipper" Relationship="MaterialTrackingDBModel.FK_ShippingOrder_Shipper" FromRole="ShippingOrder" ToRole="Shipper" />
+          <Property Name="ShippingOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="MaterialTrackingDBModel.FK_OrderDetail_Vendor" FromRole="Vendor" ToRole="OrderDetail" />
+          <NavigationProperty Name="VendorProductXRefs" Relationship="MaterialTrackingDBModel.FK_VendorProductXRef_Vendor" FromRole="Vendor" ToRole="VendorProductXRef" />
+        </EntityType>
+        <EntityType Name="VendorProductXRef">
+          <Key>
+            <PropertyRef Name="VendorID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MaterialTrackingDBModel.FK_VendorProductXRef_Product" FromRole="VendorProductXRef" ToRole="Product" />
+          <NavigationProperty Name="Vendor" Relationship="MaterialTrackingDBModel.FK_VendorProductXRef_Vendor" FromRole="VendorProductXRef" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneID" />
+          </Key>
+          <Property Name="ZoneID" Type="Int32" Nullable="false" />
+          <Property Name="ZoneTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Inventories" Relationship="MaterialTrackingDBModel.FK_Inventory_Zone" FromRole="Zone" ToRole="Inventory" />
+          <NavigationProperty Name="ShippingItems" Relationship="MaterialTrackingDBModel.FK_ShippingItems_Zone" FromRole="Zone" ToRole="ShippingItem" />
+          <NavigationProperty Name="ZoneType" Relationship="MaterialTrackingDBModel.FK_Zone_ZoneType" FromRole="Zone" ToRole="ZoneType" />
+        </EntityType>
+        <EntityType Name="ZoneType">
+          <Key>
+            <PropertyRef Name="ZoneTypeID" />
+          </Key>
+          <Property Name="ZoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Zones" Relationship="MaterialTrackingDBModel.FK_Zone_ZoneType" FromRole="ZoneType" ToRole="Zone" />
+        </EntityType>
+        <Association Name="FK_AssemblyItemProduct_AssemblyItem">
+          <End Type="MaterialTrackingDBModel.AssemblyItem" Role="AssemblyItem" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.AssemblyItemProduct" Role="AssemblyItemProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssemblyItem">
+              <PropertyRef Name="AssemblyItemID" />
+            </Principal>
+            <Dependent Role="AssemblyItemProduct">
+              <PropertyRef Name="AssemblyItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssemblyItemProduct_Product">
+          <End Type="MaterialTrackingDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.AssemblyItemProduct" Role="AssemblyItemProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="AssemblyItemProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Product">
+          <End Type="MaterialTrackingDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Zone">
+          <End Type="MaterialTrackingDBModel.Zone" Role="Zone" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Inventory">
+          <End Type="MaterialTrackingDBModel.Inventory" Role="Inventory" Multiplicity="0..1" />
+          <End Type="MaterialTrackingDBModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="InventoryID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingItems_Inventory">
+          <End Type="MaterialTrackingDBModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.ShippingItem" Role="ShippingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="InventoryID" />
+            </Principal>
+            <Dependent Role="ShippingItem">
+              <PropertyRef Name="InventoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_Location">
+          <End Type="MaterialTrackingDBModel.Location" Role="Location" Multiplicity="0..1" />
+          <End Type="MaterialTrackingDBModel.ShippingOrder" Role="ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_OrderRequest">
+          <End Type="MaterialTrackingDBModel.OrderRequest" Role="OrderRequest" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRequest">
+              <PropertyRef Name="OrderRequestID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Vendor">
+          <End Type="MaterialTrackingDBModel.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="MaterialTrackingDBModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_OrderDetail">
+          <End Type="MaterialTrackingDBModel.OrderDetail" Role="OrderDetail" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.POOrderDetail" Role="POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetail">
+              <PropertyRef Name="OrderDetailID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="OrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequest_OrderStatus">
+          <End Type="MaterialTrackingDBModel.OrderStatu" Role="OrderStatu" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrder_OrderRequest">
+          <End Type="MaterialTrackingDBModel.OrderRequest" Role="OrderRequest" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.POOrder" Role="POOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRequest">
+              <PropertyRef Name="OrderRequestID" />
+            </Principal>
+            <Dependent Role="POOrder">
+              <PropertyRef Name="OrderRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrder_OrderStatus">
+          <End Type="MaterialTrackingDBModel.OrderStatu" Role="OrderStatu" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.POOrder" Role="POOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="POOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_OrderStatus">
+          <End Type="MaterialTrackingDBModel.OrderStatu" Role="OrderStatu" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.POOrderDetail" Role="POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_OrderStatus">
+          <End Type="MaterialTrackingDBModel.OrderStatu" Role="OrderStatu" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.ShippingOrder" Role="ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POOrderDetail_POOrder">
+          <End Type="MaterialTrackingDBModel.POOrder" Role="POOrder" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.POOrderDetail" Role="POOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POOrder">
+              <PropertyRef Name="POOrderID" />
+            </Principal>
+            <Dependent Role="POOrderDetail">
+              <PropertyRef Name="POOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProductXRef_Product">
+          <End Type="MaterialTrackingDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.VendorProductXRef" Role="VendorProductXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="VendorProductXRef">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingOrder_Shipper">
+          <End Type="MaterialTrackingDBModel.Shipper" Role="Shipper" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.ShippingOrder" Role="ShippingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="ShipperID" />
+            </Principal>
+            <Dependent Role="ShippingOrder">
+              <PropertyRef Name="ShipperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingItems_Zone">
+          <End Type="MaterialTrackingDBModel.Zone" Role="Zone" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.ShippingItem" Role="ShippingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="ZoneID" />
+            </Principal>
+            <Dependent Role="ShippingItem">
+              <PropertyRef Name="PickupZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProductXRef_Vendor">
+          <End Type="MaterialTrackingDBModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.VendorProductXRef" Role="VendorProductXRef" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="VendorProductXRef">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zone_ZoneType">
+          <End Type="MaterialTrackingDBModel.ZoneType" Role="ZoneType" Multiplicity="1" />
+          <End Type="MaterialTrackingDBModel.Zone" Role="Zone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZoneType">
+              <PropertyRef Name="ZoneTypeID" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MaterialTrackingDBModelStoreContainer" CdmEntityContainer="MaterialTrackingDBEntities">
+          <EntitySetMapping Name="AssemblyItems">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.AssemblyItem">
+              <MappingFragment StoreEntitySet="AssemblyItem">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AssemblyItemID" ColumnName="AssemblyItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssemblyItemProducts">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.AssemblyItemProduct">
+              <MappingFragment StoreEntitySet="AssemblyItemProduct">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="AssemblyItemID" ColumnName="AssemblyItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderRequestID" ColumnName="OrderRequestID" />
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderRequests">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.OrderRequest">
+              <MappingFragment StoreEntitySet="OrderRequest">
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+                <ScalarProperty Name="OrderRequestID" ColumnName="OrderRequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POOrders">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.POOrder">
+              <MappingFragment StoreEntitySet="POOrder">
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="OrderRequestID" ColumnName="OrderRequestID" />
+                <ScalarProperty Name="POOrderID" ColumnName="POOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POOrderDetails">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.POOrderDetail">
+              <MappingFragment StoreEntitySet="POOrderDetail">
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="POOrderID" ColumnName="POOrderID" />
+                <ScalarProperty Name="POOrderDetailID" ColumnName="POOrderDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Shipper">
+              <MappingFragment StoreEntitySet="Shipper">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingItems">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.ShippingItem">
+              <MappingFragment StoreEntitySet="ShippingItems">
+                <ScalarProperty Name="PickupZoneID" ColumnName="PickupZoneID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+                <ScalarProperty Name="ShippingOrderID" ColumnName="ShippingOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingOrders">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.ShippingOrder">
+              <MappingFragment StoreEntitySet="ShippingOrder">
+                <ScalarProperty Name="ShippingOrderID" ColumnName="ShippingOrderID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="DateArrived" ColumnName="DateArrived" />
+                <ScalarProperty Name="DateEstimatedArrival" ColumnName="DateEstimatedArrival" />
+                <ScalarProperty Name="DateShipped" ColumnName="DateShipped" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorProductXRefs">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.VendorProductXRef">
+              <MappingFragment StoreEntitySet="VendorProductXRef">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zones">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.Zone">
+              <MappingFragment StoreEntitySet="Zone">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZoneTypes">
+            <EntityTypeMapping TypeName="MaterialTrackingDBModel.ZoneType">
+              <MappingFragment StoreEntitySet="ZoneType">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

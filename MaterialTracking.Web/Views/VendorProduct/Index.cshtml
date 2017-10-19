@@ -1,0 +1,45 @@
+﻿
+@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<VendorProductXRef>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.VendorID).Visible(false);
+              columns.Bound(a => a.ProductID);
+              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.VendorID);
+              })
+              .Read(read => read.Action("VendorProductSelectAll", "VendorProductXRef"))
+              .Update(update => update.Action("VendorProductUpdate", "VendorProductXRef"))
+              .Create(create => create.Action("VendorProductCreate", "VendorProductXRef"))
+              .Destroy(destroy => destroy.Action("VendorProductDestroy", "VendorProductXRef")))
+    )
+</div>
+
+
