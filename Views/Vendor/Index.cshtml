@@ -1,0 +1,49 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Vendor Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<Vendor>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.VendorID).Visible(false);
+              columns.Bound(a => a.Name);
+              columns.Bound(a => a.AddressLine1).Visible(false);
+              columns.Bound(a => a.AddressLine2).Visible(false);
+              columns.Bound(a => a.City).Visible(false);
+              columns.Bound(a => a.State).Visible(false);
+              columns.Bound(a => a.Zip).Visible(false);
+              columns.Bound(a => a.AccountNumber).Title("Acct#");
+              columns.Bound(a => a.ContactName).Title("Contact Name");
+              columns.Bound(a => a.ContactNumber).Title("Contact Phone");
+              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.VendorID); 
+              })
+              .Read(read => read.Action("VendorSelectAll", "Vendor"))
+              .Update(update => update.Action("VendorUpdate", "Vendor"))
+              .Create(create => create.Action("VendorCreate", "Vendor"))
+              .Destroy(destroy => destroy.Action("VendorDestroy", "Vendor")))
+    )
+</div>
