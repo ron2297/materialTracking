@@ -1,0 +1,43 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "ShippingItem Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<ShippingItem>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.ShippingOrderID);
+              columns.Bound(a => a.InventoryID);
+              columns.Bound(a => a.Quantity);
+              columns.Bound(a => a.PickupZoneID);
+              //columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.ShippingOrderID); 
+              })
+              .Read(read => read.Action("ShipperSelectAll", "Shipper"))
+              .Update(update => update.Action("ShipperUpdate", "Shipper"))
+              .Create(create => create.Action("ShipperCreate", "Shipper"))
+              .Destroy(destroy => destroy.Action("ShipperDestroy", "Shipper")))
+    )
+</div>

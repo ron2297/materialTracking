@@ -1,0 +1,49 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Shipper Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<Shipper>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.ShipperID).Visible(false);
+              columns.Bound(a => a.Name);
+              columns.Bound(a => a.AddressLine1).Visible(false);
+              columns.Bound(a => a.AddressLine2).Visible(false);
+              columns.Bound(a => a.City).Visible(false);
+              columns.Bound(a => a.State).Visible(false);
+              columns.Bound(a => a.Zip).Visible(false);
+              columns.Bound(a => a.AccountNumber).Title("Acct#");
+              columns.Bound(a => a.ContactName).Title("Contact Name");
+              columns.Bound(a => a.ContactNumber).Title("Contact Phone");
+              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.ShipperID); 
+              })
+              .Read(read => read.Action("ShipperSelectAll", "Shipper"))
+              .Update(update => update.Action("ShipperUpdate", "Shipper"))
+              .Create(create => create.Action("ShipperCreate", "Shipper"))
+              .Destroy(destroy => destroy.Action("ShipperDestroy", "Shipper")))
+    )
+</div>
