@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inventory.cs" />
     <Compile Include="VendorProduct.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="BaseClass.cs" />

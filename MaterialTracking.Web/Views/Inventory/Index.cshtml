@@ -1,18 +1,17 @@
-﻿
-@using MaterialTracking.Types
+﻿@using MaterialTracking.Types
 
 @{
-    ViewBag.Title = "Vendor Product";
+    ViewBag.Title = "Inventory Management";
 }
 
 <div style="height: 100%;">
-    @(Html.Kendo().Grid<VendorProductXRef>()
+    @(Html.Kendo().Grid<Inventory>()
           .Name("gridModules")
           .Columns(columns =>
           {
-              columns.Bound(a => a.VendorID).Title("Vendor");
+              columns.Bound(a => a.InventoryID).Title("Inventory");
               columns.Bound(a => a.ProductID).Title("Product");
-              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Bound(a => a.ZoneID).Title("Zone");
               columns.Command(command =>
               {
                   command.Edit();
@@ -33,13 +32,12 @@
               .Ajax()
               .Model(model =>
               {
-                  model.Id(p => p.VendorID);
+                  model.Id(p => p.InventoryID);
               })
-              .Read(read => read.Action("VendorProductSelectAll", "VendorProductXRef"))
-              .Update(update => update.Action("VendorProductUpdate", "VendorProductXRef"))
-              .Create(create => create.Action("VendorProductCreate", "VendorProductXRef"))
-              .Destroy(destroy => destroy.Action("VendorProductDestroy", "VendorProductXRef")))
+              .Read(read => read.Action("InventorySelectAll", "Inventory"))
+              .Update(update => update.Action("InventoryUpdate", "Inventory"))
+              .Create(create => create.Action("InventoryCreate", "Inventory"))
+              .Destroy(destroy => destroy.Action("InventoryDestroy", "Inventory")))
     )
 </div>
-
 
