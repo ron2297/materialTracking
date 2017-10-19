@@ -1,0 +1,46 @@
+﻿@using MaterialTracking.Types
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    ViewBag.Title = "Product Order Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<POOrderDetail>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.POOrderDetailID).Visible(true);
+              columns.Bound(a => a.POOrderID).Visible(true);
+              columns.Bound(a => a.OrderDetailID).Visible(true);
+              columns.Bound(a => a.PONumber).Visible(true);
+              columns.Bound(a => a.OrderStatusID).Visible(true);
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.POOrderDetailID);
+              })
+              .Read(read => read.Action("POOrderDetailSelectAll", "POOrderDetail"))
+              .Update(update => update.Action("POOrderDetailUpdate", "POOrderDetail"))
+              .Create(create => create.Action("POOrderDetailCreate", "POOrderDetail"))
+              .Destroy(destroy => destroy.Action("POOrderDetailDestroy", "POOrderDetail")))
+    )
+</div>
+
