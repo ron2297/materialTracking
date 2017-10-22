@@ -1,0 +1,41 @@
+﻿@using MaterialTracking.Types
+
+@{
+    ViewBag.Title = "Product Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<AssemblyItem>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.AssemblyItemID).Visible(true);
+              columns.Bound(a => a.Name);
+              columns.Bound(a => a.IsActive).Title("Active");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.AssemblyItemID);
+              })
+              .Read(read => read.Action("AssemblyItemSelectAll", "AssemblyItem"))
+              .Update(update => update.Action("AssemblyItemUpdate", "AssemblyItem"))
+              .Create(create => create.Action("AssemblyItemCreate", "AssemblyItem"))
+              .Destroy(destroy => destroy.Action("AssemblyItemDestroy", "AssemblyItem")))
+          )
+</div>
