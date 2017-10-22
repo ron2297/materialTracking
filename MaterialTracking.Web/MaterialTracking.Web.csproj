@@ -135,6 +135,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\ShipperController.cs" />
+    <Compile Include="Controllers\ShippingOrderController.cs" />
+    <Compile Include="Controllers\ShippingItemController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1222,6 +1225,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\Hello.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Shipper\Index.cshtml" />
+    <Content Include="Views\ShippingItem\Index.cshtml" />
+    <Content Include="Views\ShippingOrder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Bundled\" />
