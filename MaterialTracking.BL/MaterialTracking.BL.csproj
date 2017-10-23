@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderRequests.cs" />
+    <Compile Include="OrderStatus.cs" />
+    <Compile Include="POOrderDetails.cs" />
+    <Compile Include="POOrders.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="BaseClass.cs" />
     <Compile Include="Locations.cs" />
@@ -59,6 +63,8 @@
     <Compile Include="ShippingItems.cs" />
     <Compile Include="Shippers.cs" />
     <Compile Include="Vendors.cs" />
+    <Compile Include="Zones.cs" />
+    <Compile Include="ZoneTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BBS.Repository\BBS.Repository.csproj">

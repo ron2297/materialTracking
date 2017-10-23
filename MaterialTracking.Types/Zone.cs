@@ -24,6 +24,7 @@ namespace MaterialTracking.Types
     
         [ScaffoldColumn(false)]
         public int ZoneID { get; set; }
+        [ScaffoldColumn(false)]
         public int ZoneTypeID { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }

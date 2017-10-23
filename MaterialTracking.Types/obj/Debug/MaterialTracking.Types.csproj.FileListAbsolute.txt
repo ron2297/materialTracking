@@ -9,3 +9,13 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialT
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll.config
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.pdb
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.xml
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb

@@ -28,31 +28,31 @@ namespace MaterialTracking.BL
         /// <summary>
         /// Updates the Zone record with applied changes
         /// </summary>
-        /// <param name="Zone">The Zone record with the ZoneID populated that is to be updated.</param>
+        /// <param name="zone">The Zone record with the ZoneID populated that is to be updated.</param>
         /// <returns>The Zone record back, unaltered.</returns>
-        public Zone Update(Zone Zone)
+        public Zone Update(Zone zone)
         {
-            return repository.Update<Zone>(Zone);
+            return repository.Update<Zone>(zone);
         }
 
         /// <summary>
         /// Inserts the Zone record into the database
         /// </summary>
-        /// <param name="Zone">The new Zone record that is to be inserted into the database.</param>
+        /// <param name="zone">The new Zone record that is to be inserted into the database.</param>
         /// <returns>The inserted Zone record (complete with new ZoneID)</returns>
-        public Zone Insert(Zone Zone)
+        public Zone Insert(Zone zone)
         {
-            return repository.Insert<Zone>(Zone);
+            return repository.Insert<Zone>(zone);
         }
 
         /// <summary>
         /// Changes the Zone status to not active
         /// </summary>
-        /// <param name="Zone">The Zone record that is to be made inactive</param>
-        public Zone SoftDelete(Zone Zone)
+        /// <param name="zone">The Zone record that is to be made inactive</param>
+        public Zone SoftDelete(Zone zone)
         {
             Zone.IsActive = false;
-            return repository.Update<Zone>(Zone);
+            return repository.Update<Zone>(zone);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace MaterialTracking.BL
         /// <param name="ZoneID">The integer ID of the Zone to make inactive </param>
         public Zone SoftDeleteByID(int ZoneID)
         {
-            Zone Zone = SelectByID(ZoneID);
-            return SoftDelete(Zone);
+            Zone zone = SelectByID(ZoneID);
+            return SoftDelete(zone);
         }
 
     }
