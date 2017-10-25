@@ -7,8 +7,6 @@
 *.o
 *.so
 *.pdb
-*.csproj
-*.csproj
 *.cache
 
 # Packages #
