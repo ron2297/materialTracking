@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MaterialTracking.Web\\Controllers",
-    "\\MaterialTracking.Web\\Views",
+    "\\MaterialTracking.BL",
+    "\\MaterialTracking.Web",
     "\\MaterialTracking.Web\\Views\\Home"
   ],
-  "SelectedNode": "\\MaterialTracking.sln",
+  "SelectedNode": "\\MaterialTracking.Web",
   "PreviewInSolutionExplorer": false
 }

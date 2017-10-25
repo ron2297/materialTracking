@@ -1,0 +1,46 @@
+﻿
+@using MaterialTracking.Types
+@{
+    ViewBag.Title = "Order Detail";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<OrderDetail>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.OrderDetailID).Visible(false);
+              columns.Bound(a => a.OrderRequestID).Visible(false);
+              columns.Bound(a => a.ProductID).Visible(false);
+              columns.Bound(a => a.VendorID).Visible(false);
+              columns.Bound(a => a.Vendor.Name).Title("Vendor");
+              columns.Bound(a => a.Quantity).Title("Quantity");
+              columns.Bound(a => a.OrderRequest.DateOrdered).Title("Date Ordered");
+              ///trying to get product
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.OrderDetailID);
+              })
+              .Read(read => read.Action("OrderDetailSelectAll", "OrderDetail"))
+              .Update(update => update.Action("OrderDetailUpdate", "OrderDetail"))
+              .Create(create => create.Action("OrderDetailCreate", "OrderDetail"))
+              .Destroy(destroy => destroy.Action("OrderDetailDestroy", "OrderDetail")))
+    )
+</div>

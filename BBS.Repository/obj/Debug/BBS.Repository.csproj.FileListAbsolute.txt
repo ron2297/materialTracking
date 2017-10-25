@@ -19,3 +19,13 @@ C:\Users\FirstUser\Documents\GitHub\materialTracking\BBS.Repository\obj\Debug\BB
 C:\Users\FirstUser\Documents\GitHub\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.csproj.CoreCompileInputs.cache
 C:\Users\FirstUser\Documents\GitHub\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.pdb
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.csproj.CoreCompileInputs.cache
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\BBS.Repository.dll.config
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\BBS.Repository.dll
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\BBS.Repository.pdb
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.dll
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.pdb
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.dll.config
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.csprojResolveAssemblyReference.cache
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.dll
+\\mac\Home\Documents\SEProject\materialTracking\BBS.Repository\obj\Debug\BBS.Repository.pdb

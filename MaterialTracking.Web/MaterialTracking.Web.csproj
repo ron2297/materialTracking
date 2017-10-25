@@ -133,6 +133,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\OrderRequestController.cs" />
     <Compile Include="Controllers\OrderStatuController.cs" />
     <Compile Include="Controllers\POOrderController.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Controllers\ShippingOrderController.cs" />
     <Compile Include="Controllers\ShippingItemController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Controllers\VendorProductController.cs" />
     <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Controllers\ZoneTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1240,6 +1243,9 @@
     <Content Include="Views\POOrder\Index.cshtml" />
     <Content Include="Views\ZoneType\Index.cshtml" />
     <Content Include="Views\Zone\Index.cshtml" />
+    <Content Include="Views\Inventory\Index.cshtml" />
+    <Content Include="Views\OrderDetail\Index.cshtml" />
+    <Content Include="Views\VendorProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Bundled\" />

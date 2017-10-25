@@ -1,0 +1,45 @@
+﻿
+@using MaterialTracking.Types
+@{
+    ViewBag.Title = "Inventory Management";
+}
+<div style="height: 100%;">
+    @(Html.Kendo().Grid<Inventory>()
+          .Name("gridModules")
+          .Columns(columns =>
+          {
+              columns.Bound(a => a.InventoryID).Visible(false);
+              columns.Bound(a => a.ProductID).Visible(false);
+              columns.Bound(a => a.ZoneID).Visible(false);
+              columns.Bound(a => a.Product.Name).Title("Product");
+              columns.Bound(a => a.Zone.Name).Title("Zone");
+              columns.Bound(a => a.Zone.Name).Title("Quantity");
+              columns.Command(command =>
+              {
+                  command.Edit();
+                  command.Destroy();
+              });
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Sortable()
+          .ColumnMenu()
+          .Filterable()
+          .AutoBind(true)
+          .HtmlAttributes(new { style = "height: 100%;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model =>
+              {
+                  model.Id(p => p.InventoryID);
+              })
+              .Read(read => read.Action("InventorySelectAll", "Inventory"))
+              .Update(update => update.Action("InventoryUpdate", "Inventory"))
+              .Create(create => create.Action("InventoryCreate", "Inventory"))
+              .Destroy(destroy => destroy.Action("InventoryDestroy", "Inventory")))
+    )
+</div>
+

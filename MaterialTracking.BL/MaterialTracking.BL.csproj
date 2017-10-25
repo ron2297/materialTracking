@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VendorProductXRef.cs" />
+    <Compile Include="OrderDetails.cs" />
+    <Compile Include="Inventory.cs" />
     <Compile Include="OrderRequests.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="POOrderDetails.cs" />

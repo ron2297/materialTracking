@@ -51,7 +51,7 @@ namespace MaterialTracking.BL
         /// <param name="zone">The Zone record that is to be made inactive</param>
         public Zone SoftDelete(Zone zone)
         {
-            Zone.IsActive = false;
+            ///Zone.IsActive = false;
             return repository.Update<Zone>(zone);
         }
 
