@@ -17,6 +17,45 @@ namespace MaterialTracking.Web.Controllers
             return View();
         }
 
-       
+
+        #region AJAX Actions
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InventorySelectAll([DataSourceRequest] DataSourceRequest request)
+        {
+            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
+            List<Inventory> model = blInventoryClass.SelectAll();
+            return Json(model.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InventoryUpdate([DataSourceRequest] DataSourceRequest request, Inventory inventory)
+        {
+            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
+            Inventory model = blInventoryClass.Update(inventory);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InventoryCreate([DataSourceRequest] DataSourceRequest request, Inventory location)
+        {
+            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
+            Inventory model = blInventoryClass.Insert(location);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InventoryDestroy([DataSourceRequest] DataSourceRequest request, Inventory inventory)
+        {
+            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
+            Inventory model = blInventoryClass.SoftDelete(inventory);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion AJAX Actions
+
+
+
+
     }
 }
