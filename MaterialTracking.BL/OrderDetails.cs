@@ -7,7 +7,7 @@ using MaterialTracking.Types;
 
 namespace MaterialTracking.BL
 {
-    class OrderDetetails:BaseClass
+    class OrderDetails:BaseClass
     {
         public List<OrderDetail> SelectAll()
         {

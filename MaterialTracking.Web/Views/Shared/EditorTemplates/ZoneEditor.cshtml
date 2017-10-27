@@ -1,0 +1,62 @@
+﻿@using System.Collections
+@using Kendo.Mvc.UI
+@using MaterialTracking.Web.Models
+@model ZoneViewModel
+@{
+    ViewContext.FormContext = new FormContext();
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#gridZone").data().kendoGrid.options.editable.window.width = "500px";
+        $(".k-edit-form-container").css("width", "500px");
+    });
+
+    function ddlChange() {
+        var selected = $("#SelectedZoneTypeID").data("kendoDropDownList").text();
+        $("#ZoneTypeName").val(selected);
+        $("#ZoneTypeName").change();
+    }
+
+</script>
+
+<div style="display: none">
+    @(Html.Kendo().TextBoxFor(m => m.ZoneID))
+    @(Html.Kendo().TextBoxFor(m => m.ZoneTypeName))
+</div>
+<table style="width:100%;">
+    <tr>
+        <td width="100%" valign="top">
+            <div class="k-edit-label">
+                Zone Name
+            </div>
+            <div data-container-for="Name" class="k-edit-field">
+                @(Html.Kendo().TextBoxFor(model => model.Name).HtmlAttributes(new { style = "width:300px" }))
+                <div id="errorName" class="errorValidationLabel"></div>
+            </div>
+            <div class="k-edit-label">
+                Zone Type
+            </div>
+            <div  class="k-edit-field">
+                @(Html.Kendo().DropDownListFor(m=>m.SelectedZoneTypeID)
+                .Name("SelectedZoneTypeID")
+                      .DataValueField("ZoneTypeID")
+                      .DataTextField("Name")
+                      .BindTo((IEnumerable)ViewBag.vbZoneTypes)
+                      .OptionLabel("- Select a Zone Type")
+                      .HtmlAttributes(new { style = "width:300px" })
+                      .Events(e=>e.Change("ddlChange"))
+                )
+                <div id="errorZoneTypeID" class="errorValidationLabel"></div>
+            </div>
+            <div class="k-edit-label">
+                Active
+            </div>
+            <div data-container-for="IsActive" class="k-edit-field">
+                @(Html.Kendo().CheckBoxFor(model => model.IsActive).HtmlAttributes(new { style = "width:75px" }))
+            </div>
+        </td>
+    </tr>
+</table>
+

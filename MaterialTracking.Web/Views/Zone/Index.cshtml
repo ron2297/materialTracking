@@ -1,24 +1,19 @@
-﻿@using MaterialTracking.Types
+﻿@using System.Collections
+@using MaterialTracking.Web.Models
+@model List<ZoneViewModel>
 
 @{
     ViewBag.Title = "Zone Management";
 }
 <div style="height: 100%;">
-    @(Html.Kendo().Grid<Zone>()
-          .Name("gridModules")
+    @(Html.Kendo().Grid(Model)
+          .Name("gridZone")
           .Columns(columns =>
           {
               columns.Bound(a => a.ZoneID).Visible(false);
-              columns.Bound(a => a.ZoneTypeID).Visible(false);
-              columns.Bound(a => a.Name);
-              //columns.Bound(a => a.ItemNumber).Title("ItemNumber");
-              //columns.Bound(a => a.AddressLine1).Visible(false);
-              //columns.Bound(a => a.AddressLine2).Visible(false);
-              //columns.Bound(a => a.City).Visible(false);
-              //columns.Bound(a => a.State).Visible(false);
-              //columns.Bound(a => a.Zip).Visible(false);
-              //columns.Bound(a => a.ContactName).Title("Contact Name");
-              // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
+              columns.Bound(a => a.SelectedZoneTypeID).Visible(false);
+              columns.Bound(a => a.Name).Title("Zone");
+              columns.Bound(a => a.ZoneTypeName).Title("Zone Type");
               columns.Bound(a => a.IsActive).Title("Active");
               columns.Command(command =>
               {
@@ -30,25 +25,23 @@
           {
               tb.Create();
           })
-          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("ZoneEditor"))
           .Sortable()
           .ColumnMenu()
           .Filterable()
-          .AutoBind(true)
-          .HtmlAttributes(new { style = "height: 100%;" })
+          .HtmlAttributes(new {style = "height: 100%;"})
           .DataSource(dataSource => dataSource
               .Ajax()
-              .Model(model =>
+              .ServerOperation(true)
+              .Model(m =>
               {
-                  model.Id(p => p.ZoneID);
+                  m.Id(c => c.ZoneID);
               })
-              .Read(read => read.Action("ZoneSelectAll", "Zone"))
-              .Update(update => update.Action("ZoneUpdate", "Zone"))
-              .Create(create => create.Action("ZoneCreate", "Zone"))
-              .Destroy(destroy => destroy.Action("ZoneDestroy", "Zone")))
-          )
+              .Update(u => u.Action("ZoneUpdate", "Zone"))
+              .Create(u => u.Action("ZoneCreate", "Zone"))
+              .Destroy(u => u.Action("ZoneDestroy", "Zone"))
+              ))
 
     <br />
-    @Html.ActionLink("Zone Type", "Index", "ZoneType")
 
 </div>

@@ -31,16 +31,23 @@ namespace MaterialTracking.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult InventoryUpdate([DataSourceRequest] DataSourceRequest request, Inventory inventory)
         {
+            Inventory newItem = new Inventory
+            {
+                InventoryID = inventory.InventoryID,
+                ProductID = inventory.ProductID,
+                ZoneID = inventory.ZoneID,
+                Quantity = inventory.Quantity
+            };
             BL.InventoryClass blInventoryClass = new BL.InventoryClass();
             Inventory model = blInventoryClass.Update(inventory);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult InventoryCreate([DataSourceRequest] DataSourceRequest request, Inventory location)
+        public ActionResult InventoryCreate([DataSourceRequest] DataSourceRequest request, Inventory inventory)
         {
             BL.InventoryClass blInventoryClass = new BL.InventoryClass();
-            Inventory model = blInventoryClass.Insert(location);
+            Inventory model = blInventoryClass.Insert(inventory);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 

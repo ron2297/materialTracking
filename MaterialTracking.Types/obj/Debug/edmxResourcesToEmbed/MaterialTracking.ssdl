@@ -163,7 +163,7 @@
     <Key>
       <PropertyRef Name="ZoneID" />
     </Key>
-    <Property Name="ZoneID" Type="int" Nullable="false" />
+    <Property Name="ZoneID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ZoneTypeID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
