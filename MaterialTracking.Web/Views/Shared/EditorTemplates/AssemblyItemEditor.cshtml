@@ -1,0 +1,81 @@
+﻿@using System.Collections
+@using Kendo.Mvc.UI
+@using MaterialTracking.Web.Models
+@model ZoneViewModel
+@{
+    ViewContext.FormContext = new FormContext();
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#gridZone").data().kendoGrid.options.editable.window.width = "500px";
+        $(".k-edit-form-container").css("width", "500px");
+    });
+
+    function ddlChange() {
+        var selected = $("#SelectedZoneTypeID").data("kendoDropDownList").text();
+        $("#ZoneTypeName").val(selected);
+        $("#ZoneTypeName").change();
+    }
+
+</script>
+
+<div style="display: none">
+    @(Html.Kendo().TextBoxFor(m => m.ZoneID))
+    @(Html.Kendo().TextBoxFor(m => m.ZoneTypeName))
+</div>
+<table style="width:100%;">
+    <tr>
+        <td width="100%" valign="top">
+            <div class="k-edit-label">
+                Zone Name
+            </div>
+            <div data-container-for="Name" class="k-edit-field">
+                @(Html.Kendo().TextBoxFor(model => model.Name).HtmlAttributes(new { style = "width:300px" }))
+                <div id="errorName" class="errorValidationLabel"></div>
+            </div>
+            <div class="k-edit-label">
+                Assembly Item
+            </div>
+@*Big ol block of code is for the drop downs *@
+            <div  class="k-edit-field">
+                @(Html.Kendo().DropDownListFor(m=>m.SelectedZoneTypeID)
+                .Name("SelectedItemID")
+                      .DataValueField("ItemID")
+                      .DataTextField("Item Name")
+                      .BindTo((IEnumerable)ViewBag.vbZoneTypes)
+                      .OptionLabel("- Select an Item")
+                      .HtmlAttributes(new { style = "width:300px" })
+                      .Events(e=>e.Change("ddlChange"))
+                )
+                <div id="errorZoneTypeID" class="errorValidationLabel"></div>
+            </div>
+@*Everything before this is for the drop down*@
+            <div class="k-edit-label">
+                Quantity
+            </div>
+            @*Big ol block of code is for the drop downs *@
+            <div class="k-edit-field">
+                @(Html.Kendo().DropDownListFor(m => m.SelectedZoneTypeID)
+                .Name("ItemQuantity")
+                      .DataValueField("ZoneTypeID")@* There is no quantity value yet but we'll make it I swear*@
+                      .DataTextField("Item Quantity")
+                      .BindTo((IEnumerable)ViewBag.vbZoneTypes)
+                      .OptionLabel("- Select a Quantity -")
+                      .HtmlAttributes(new { style = "width:300px" })
+                      .Events(e => e.Change("ddlChange"))
+                )
+                <div id="errorZoneTypeID" class="errorValidationLabel"></div>
+            </div>
+            @*Everything before this is for the drop down*@
+            <div class="k-edit-label">
+                Active
+            </div>
+            <div data-container-for="IsActive" class="k-edit-field">
+                @(Html.Kendo().CheckBoxFor(model => model.IsActive).HtmlAttributes(new { style = "width:75px" }))
+            </div>
+        </td>
+    </tr>
+</table>
+
