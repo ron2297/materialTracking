@@ -1,0 +1,55 @@
+﻿@using System.Collections
+@using Kendo.Mvc.UI
+@using MaterialTracking.Web.Models
+@model AssemblyViewModel
+@{
+    ViewBag.Title = "AssemblyEditor";
+}
+
+@{
+    ViewContext.FormContext = new FormContext();
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#gridAssembly").data().kendoGrid.options.editable.window.width = "500px";
+        $(".k-edit-form-container").css("width", "500px");
+    });
+
+</script>
+
+<div style="display: none">
+    @(Html.Kendo().TextBoxFor(m => m.AssemblyItemID))
+    @(Html.Kendo().TextBoxFor(m => m.Name))
+</div>
+<table style="width:100%;">
+    <tr>
+        <td width="100%" valign="top">
+            <div class="k-edit-label">
+                Assembly Name
+            </div>
+            <div data-container-for="Name" class="k-edit-field">
+                @(Html.Kendo().TextBoxFor(model => model.Name).HtmlAttributes(new { style = "width:300px" }))
+                <div id="errorName" class="errorValidationLabel"></div>
+            </div>
+            <div class="k-edit-label">
+                Active
+            </div>
+            <div data-container-for="IsActive" class="k-edit-field">
+                @(Html.Kendo().CheckBoxFor(model => model.IsActive).HtmlAttributes(new { style = "width:75px" }))
+            </div>
+            <div class="k-edit-label">
+                Available products
+            </div>
+            <div data-container-for="Products" class="k-edit-field">
+            </div>
+            <div class="k-edit-label">
+                Products for Assembly
+            </div>
+            
+        </td>
+    </tr>
+</table>
+
+
