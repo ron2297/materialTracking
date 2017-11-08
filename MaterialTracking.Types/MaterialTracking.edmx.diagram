@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="69ac03ad247c4c3081e545cd6e88b737" Name="Diagram1">
+      <Diagram DiagramId="69ac03ad247c4c3081e545cd6e88b737" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="MaterialTrackingDBModel.AssemblyItem" Width="1.5" PointX="3.75" PointY="21.25" />
         <EntityTypeShape EntityType="MaterialTrackingDBModel.AssemblyItemProduct" Width="1.5" PointX="6" PointY="14.125" />
         <EntityTypeShape EntityType="MaterialTrackingDBModel.Inventory" Width="1.5" PointX="3" PointY="15.5" />
