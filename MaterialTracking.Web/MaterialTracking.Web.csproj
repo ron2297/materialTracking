@@ -132,6 +132,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BaseController.cs" />
+    <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssemblyViewModel.cs" />
     <Compile Include="Models\ZoneViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1248,6 +1250,8 @@
     <Content Include="Views\OrderDetail\Index.cshtml" />
     <Content Include="Views\VendorProduct\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ZoneEditor.cshtml" />
+    <Content Include="Views\Assembly\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AssemblyEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Bundled\" />
