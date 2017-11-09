@@ -64,7 +64,7 @@
                          .Name("gridProduct")
                           .Columns(columns =>
                           {
-                              columns.Bound(a => a.ProductID).Title("Product").Width(150);
+                              columns.Bound(a => a.Product.Name).Title("Product").Width(150);
                               columns.Bound(a => a.Quantity).Title("Quantity").Width(100);
 
                               // columns.Command(command =>

@@ -5,12 +5,12 @@ using MaterialTracking.Types;
 
 namespace MaterialTracking.BL
 {
-    class AssemblyItemAssemblyItemProducts:BaseClass 
+    class AssemblyItemProducts:BaseClass 
     {
         
         public List<AssemblyItemProduct> SelectAll()
         {
-            return repository.Select<AssemblyItemProduct>(c => c.IsActive);
+            return repository.SelectWithAssociations<AssemblyItemProduct>(new List<string> { "Product"});
         }
 
         
