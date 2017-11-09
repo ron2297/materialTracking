@@ -13,6 +13,7 @@ namespace MaterialTracking.Web.Models
         public bool IsActive { get; set; }
         public int Quantity { get; set; }
         public List<Product> Products { get; set; }
+        public List<AssemblyItemProduct> AssemblyProducts {get; set; }
        
     }
 }

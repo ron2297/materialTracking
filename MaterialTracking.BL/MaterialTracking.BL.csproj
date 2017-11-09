@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assembly.cs" />
+    <Compile Include="AssemblyItemProducts.cs" />
     <Compile Include="VendorProductXRef.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Inventory.cs" />

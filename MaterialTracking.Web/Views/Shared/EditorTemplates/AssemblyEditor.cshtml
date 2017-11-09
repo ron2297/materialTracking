@@ -13,8 +13,8 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#gridAssembly").data().kendoGrid.options.editable.window.width = "500px";
-        $(".k-edit-form-container").css("width", "500px");
+        $("#gridAssembly").data().kendoGrid.options.editable.window.width = "600px";
+        $(".k-edit-form-container").css("width", "600px");
     });
 
 </script>
@@ -33,21 +33,47 @@
                 @(Html.Kendo().TextBoxFor(model => model.Name).HtmlAttributes(new { style = "width:300px" }))
                 <div id="errorName" class="errorValidationLabel"></div>
             </div>
-            <div class="k-edit-label">
-                Active
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="margin:20px;">
+                Available Products
             </div>
-            <div data-container-for="IsActive" class="k-edit-field">
-                @(Html.Kendo().CheckBoxFor(model => model.IsActive).HtmlAttributes(new { style = "width:75px" }))
+            <div data-container-for="Products" style="width:250px;margin:20px;">
+                @(Html.Kendo().Grid(Model.Products)
+                         .Name("gridProduct")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(a => a.Name).Title("Product");
+                             // columns.Command(command =>
+                             // {
+                             //     command.Add();
+                             // });
+                          })
+                 )
+                         
             </div>
-            <div class="k-edit-label">
-                Available products
+        </td>
+        <td>
+            <div style="margin:20px">
+                Assembly Products
             </div>
-            <div data-container-for="Products" class="k-edit-field">
-            </div>
-            <div class="k-edit-label">
-                Products for Assembly
-            </div>
-            
+            <div data-container-for="assemblyProducts" style="width:250px;margin:20px;">
+                @(Html.Kendo().Grid(Model.AssemblyProducts)
+                         .Name("gridProduct")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(a => a.ProductID).Title("Product").Width(150);
+                              columns.Bound(a => a.Quantity).Title("Quantity").Width(100);
+
+                              // columns.Command(command =>
+                              // {
+                              //     command.Add();
+                              // });
+                          })
+                )
+            </div> 
         </td>
     </tr>
 </table>

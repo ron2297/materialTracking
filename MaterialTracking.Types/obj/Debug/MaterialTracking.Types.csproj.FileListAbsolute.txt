@@ -29,4 +29,3 @@ C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
-\\Mac\Home\Documents\seproject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csprojResolveAssemblyReference.cache
