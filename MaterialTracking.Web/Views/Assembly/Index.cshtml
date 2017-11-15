@@ -1,30 +1,38 @@
-﻿@using System.Collections
-@using MaterialTracking.Web.Models
-@model List<AssemblyViewModel>
+﻿@using MaterialTracking.Types
+
 @{
     ViewBag.Title = "Assembly Management";
 }
+<script>
+    function ViewProducts(assemblyItemID) {
+        var url = '@Url.Action("EditAssemblyProducts", "Assembly")/' + assemblyItemID;
+        window.location = url;
+    }
+
+</script>
 
 <div style="height: 100%;">
-    @(Html.Kendo().Grid(Model)
+    @(Html.Kendo().Grid<AssemblyItem>()
           .Name("gridAssembly")
           .Columns(columns =>
           {
               columns.Bound(a => a.AssemblyItemID).Visible(false);
               columns.Bound(a => a.Name).Title("Name");
-              columns.Bound(a => a.Quantity).Title("Quantity");
               columns.Bound(a => a.IsActive).Title("Active");
+              columns.Template(@<text></text>).ClientTemplate(
+                  "<a href='javascript:ViewProducts(#=AssemblyItemID#);' class='k-button k-button-icontext'>View Assembly</a>")
+                          .HtmlAttributes(new { style = "text-align:left;" }).Width(180);
               columns.Command(command =>
               {
                   command.Edit();
                   command.Destroy();
-              });
+              }).Width(200);
           })
           .ToolBar(tb =>
           {
               tb.Create();
           })
-          .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("AssemblyEditor"))
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Sortable()
           .ColumnMenu()
           .Filterable()
@@ -36,13 +44,13 @@
               {
                   m.Id(c => c.AssemblyItemID);
               })
-              .Update(u => u.Action("AssemblyItemUpdate", "AssemblyItem"))
-              .Create(u => u.Action("AssemblyItemCreate", "AssemblyItem"))
-              .Destroy(u => u.Action("AssemblyItemDestroy", "AssemblyItem"))
+              .Read(r => r.Action("AssemblyItemSelectAll", "Assembly"))
+              .Update(u => u.Action("AssemblyItemUpdate", "Assembly"))
+              .Create(u => u.Action("AssemblyItemCreate", "Assembly"))
+              .Destroy(u => u.Action("AssemblyItemDestroy", "Assembly"))
               ))
 
     <br />
 
 </div>
-
 

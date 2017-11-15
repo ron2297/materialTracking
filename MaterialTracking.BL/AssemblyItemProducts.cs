@@ -5,45 +5,47 @@ using MaterialTracking.Types;
 
 namespace MaterialTracking.BL
 {
-    class AssemblyItemProducts:BaseClass 
+    public class AssemblyItemProducts : BaseClass
     {
-        
-        public List<AssemblyItemProduct> SelectAll()
+
+        public List<AssemblyItemProduct> SelectByAssemblyID(int assemblyID)
         {
-            return repository.SelectWithAssociations<AssemblyItemProduct>(new List<string> { "Product"});
+            return repository.SelectWithAssociations<AssemblyItemProduct>(new List<string> { "Product" }, c => c.IsActive && c.AssemblyItemID == assemblyID);
         }
 
-        
-        public AssemblyItemProduct SelectByID(int ProductID)
+
+        public AssemblyItemProduct Insert(AssemblyItemProduct assemblyItemProduct)
         {
-            return repository.Select<AssemblyItemProduct>(c => c.IsActive && c.ProductID == ProductID).FirstOrDefault();
+            return repository.Insert<AssemblyItemProduct>(assemblyItemProduct);
         }
 
-       
-        public AssemblyItemProduct Update(AssemblyItemProduct AssemblyItemProduct)
+
+        public void DeleteByAssemblyID(int assemblyID)
         {
-            return repository.Update<AssemblyItemProduct>(AssemblyItemProduct);
+            List<AssemblyItemProduct> aip = SelectByAssemblyID(assemblyID);
+            foreach (AssemblyItemProduct item in aip)
+            {
+                repository.Delete(item);
+            }
         }
 
-        
-        public AssemblyItemProduct Insert(AssemblyItemProduct AssemblyItemProduct)
+        public AssemblyItemProduct Update(AssemblyItemProduct assemblyItemProduct)
         {
-            return repository.Insert<AssemblyItemProduct>(AssemblyItemProduct);
+            if (repository.DoesExist<AssemblyItemProduct>(assemblyItemProduct))
+            {
+                return repository.Update<AssemblyItemProduct>(assemblyItemProduct);
+            }
+            else
+            {
+                return repository.Insert<AssemblyItemProduct>(assemblyItemProduct);
+            }
+
         }
 
-        
-        public AssemblyItemProduct SoftDelete(AssemblyItemProduct AssemblyItemProduct)
+        public void Delete(AssemblyItemProduct assemblyItemProduct)
         {
-            AssemblyItemProduct.IsActive = false;
-            return repository.Update<AssemblyItemProduct>(AssemblyItemProduct);
-        }
-
-        public AssemblyItemProduct SoftDeleteByID(int ProductID)
-        {
-            AssemblyItemProduct AssemblyItemProduct = SelectByID(ProductID);
-            return SoftDelete(AssemblyItemProduct);
+            repository.Delete(assemblyItemProduct);
         }
 
     }
-
 }
