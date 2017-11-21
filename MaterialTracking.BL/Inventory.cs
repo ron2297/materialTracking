@@ -12,7 +12,7 @@ namespace MaterialTracking.BL
     {
         public List<Inventory> SelectAll()
         {
-            return repository.SelectWithAssociations<Inventory>(new List<string> { "Product", "Zone" });
+            return repository.SelectWithAssociations<Inventory>(new List<string> { "Product", "Zone","OrderDetails","ShippingItems" });
         }
         public Inventory SelectByID(int inventoryID)
         {

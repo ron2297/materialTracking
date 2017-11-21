@@ -17,39 +17,39 @@ namespace MaterialTracking.Web.Controllers
             return View();
         }
         #region AJAX Actions
-        //Error: OrderDetails is inacessible due to its protection level (Uncomment to see error
 
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult OrderDetailSelectAll([DataSourceRequest] DataSourceRequest detail)
-        //{
-        //    BL.OrderDetails blOrderDetails = new BL.OrderDetails();
-        //    List<OrderDetail> model = blOrderDetails.SelectAll();
-        //    return Json(model.ToDataSourceResult(detail), JsonRequestBehavior.AllowGet);
-        //}
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult OrderDetailSelectAll([DataSourceRequest] DataSourceRequest request)
+        {
+            BL.OrderDetails blOrderDetails = new BL.OrderDetails();
+            List<OrderDetail> model = blOrderDetails.SelectAll();
+            return Json(model.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
 
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult OrderDetailUpdate([DataSourceRequest] DataSourceRequest detail, OrderDetail OrderDetail)
-        //{
-        //    BL.OrderDetails blOrderDetails = new BL.OrderDetails();
-        //    OrderDetail model = blOrderDetails.Update(OrderDetail);
-        //    return Json(new[] { model }.ToDataSourceResult(detail, ModelState), JsonRequestBehavior.AllowGet);
-        //}
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult OrderDetailUpdate([DataSourceRequest] DataSourceRequest request, OrderDetail location)
+        {
+            BL.OrderDetails blOrderDetails = new BL.OrderDetails();
+            OrderDetail model = blOrderDetails.Update(location);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
 
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult OrderDetailCreate([DataSourceRequest] DataSourceRequest detail, OrderDetail OrderDetail)
-        //{
-        //    BL.OrderDetails blOrderDetails = new BL.OrderDetails();
-        //    OrderDetail model = blOrderDetails.Insert(OrderDetail);
-        //    return Json(new[] { model }.ToDataSourceResult(detail, ModelState), JsonRequestBehavior.AllowGet);
-        //}
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult OrderDetailCreate([DataSourceRequest] DataSourceRequest request, OrderDetail location)
+        {
+            BL.OrderDetails blOrderDetails = new BL.OrderDetails();
+            OrderDetail model = blOrderDetails.Insert(location);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
 
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult OrderDetailDestroy([DataSourceRequest] DataSourceRequest detail, OrderDetail OrderDetail)
-        //{
-        //    BL.OrderDetails blOrderDetails = new BL.OrderDetails();
-        //    OrderDetail model = blOrderDetails.SoftDelete(OrderDetail);
-        //    return Json(new[] { model }.ToDataSourceResult(detail, ModelState), JsonRequestBehavior.AllowGet);
-        //}
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult OrderDetailDestroy([DataSourceRequest] DataSourceRequest request, OrderDetail location)
+        {
+            BL.OrderDetails blOrderDetails = new BL.OrderDetails();
+            OrderDetail model = blOrderDetails.SoftDelete(location);
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+        }
+
 
         #endregion AJAX Actions
     }

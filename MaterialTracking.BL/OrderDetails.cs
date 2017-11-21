@@ -7,11 +7,11 @@ using MaterialTracking.Types;
 
 namespace MaterialTracking.BL
 {
-    class OrderDetails:BaseClass
+    public class OrderDetails:BaseClass
     {
         public List<OrderDetail> SelectAll()
         {
-            return repository.SelectWithAssociations<OrderDetail>(new List<string> { "Vendor","OrderRequest" });
+            return repository.SelectWithAssociations<OrderDetail>(new List<string> { "Vendor","OrderRequest","Inventory","POOrderDetails" });
         }
         public OrderDetail SelectByID(int OrderDetailID)
         {
