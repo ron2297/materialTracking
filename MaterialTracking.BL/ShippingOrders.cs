@@ -16,7 +16,7 @@ namespace MaterialTracking.BL
         }
 
         /// <summary>
-        /// Selects a single ShippingOrder by the shippingorder ID
+        /// Selects a single ShippingOrder by the shippingorders ID
         /// </summary>
         /// <param name="shipperID">the integer ID of the ShippingOrder</param>
         /// <returns>A single ShippingOrder entity</returns>
@@ -27,43 +27,44 @@ namespace MaterialTracking.BL
         }
 
         /// <summary>
-        /// Updates the shippingorder record with applied changes
+        /// Updates the shippingorders record with applied changes
         /// </summary>
-        /// <param name="shippingorder">The shippingorder record with the shipperID populated that is to be updated.</param>
-        /// <returns>The shippingorder record back, unaltered.</returns>
-        public ShippingOrder Update(ShippingOrder shippingorder)
+        /// <param name="shippingorders">The shippingorders record with the shipperID populated that is to be updated.</param>
+        /// <returns>The shippingorders record back, unaltered.</returns>
+        public ShippingOrder Update(ShippingOrder shippingorders)
         {
-            return repository.Update<ShippingOrder>(shippingorder);
+            return repository.Update<ShippingOrder>(shippingorders);
+
         }
 
         /// <summary>
-        /// Inserts the shippingorder record into the database
+        /// Inserts the shippingorders record into the database
         /// </summary>
-        /// <param name="shippingorder">The new ShippingOrder record that is to be inserted into the database.</param>
+        /// <param name="shippingorders">The new ShippingOrder record that is to be inserted into the database.</param>
         /// <returns>The inserted ShippingOrder record (complete with new ShipperID)</returns>
-        public ShippingOrder Insert(ShippingOrder shippingorder)
+        public ShippingOrder Insert(ShippingOrder shippingorders)
         {
-            return repository.Insert<ShippingOrder>(shippingorder);
+            return repository.Insert<ShippingOrder>(shippingorders);
         }
 
         /// <summary>
-        /// Changes the shippingorder status to not active
+        /// Changes the shippingorders status to not active
         /// </summary>
-        /// <param name="shippingorder">The shippingorder record that is to be made inactive</param>
-        public ShippingOrder SoftDelete(ShippingOrder shippingorder)
+        /// <param name="shippingorders">The shippingorders record that is to be made inactive</param>
+        public ShippingOrder SoftDelete(ShippingOrder shippingorders)
         {
-            //shippingorder.IsActive = false;
-            return repository.Update<ShippingOrder>(shippingorder);
+            //shippingorders.IsActive = false;
+            return repository.Update<ShippingOrder>(shippingorders);
         }
 
         /// <summary>
-        /// Changes a shippingorder record of the specified shippingorder ID to be inactive
+        /// Changes a shippingorders record of the specified shippingorders ID to be inactive
         /// </summary>
-        /// <param name="shipperID">The integer ID of the shippingorder to make inactive </param>
+        /// <param name="shipperID">The integer ID of the shippingorders to make inactive </param>
         public ShippingOrder SoftDeleteByID(int shipperID)
         {
-            ShippingOrder shippingorder = SelectByID(shipperID);
-            return SoftDelete(shippingorder);
+            ShippingOrder shippingorders = SelectByID(shipperID);
+            return SoftDelete(shippingorders);
         }
 
     }

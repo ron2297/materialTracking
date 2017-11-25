@@ -30,26 +30,26 @@ namespace MaterialTracking.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ShippingOrderUpdate([DataSourceRequest] DataSourceRequest request, ShippingOrder shippingorder)
+        public ActionResult ShippingOrderUpdate([DataSourceRequest] DataSourceRequest request, ShippingOrder shippingorders)
         {
             BL.ShippingOrders blShippingOrders = new BL.ShippingOrders();
-            ShippingOrder model = blShippingOrders.Update(shippingorder);
+            ShippingOrder model = blShippingOrders.Update(shippingorders);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ShippingOrderCreate([DataSourceRequest] DataSourceRequest request, ShippingOrder shippingorder)
+        public ActionResult ShippingOrderCreate([DataSourceRequest] DataSourceRequest request, ShippingOrder shippingorders)
         {
             BL.ShippingOrders blShippingOrders = new BL.ShippingOrders();
-            ShippingOrder model = blShippingOrders.Insert(shippingorder);
+            ShippingOrder model = blShippingOrders.Insert(shippingorders);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ShippingOrderDestroy([DataSourceRequest] DataSourceRequest request, ShippingOrder vendor)
+        public ActionResult ShippingOrderDestroy([DataSourceRequest] DataSourceRequest request, ShippingOrder shippingorders)
         {
             BL.ShippingOrders blShippingOrders = new BL.ShippingOrders();
-            ShippingOrder model = blShippingOrders.SoftDelete(vendor);
+            ShippingOrder model = blShippingOrders.SoftDelete(shippingorders);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
