@@ -18,18 +18,18 @@ namespace MaterialTracking.BL
         /// <summary>
         /// Selects a single ShippingOrder by the shippingorders ID
         /// </summary>
-        /// <param name="shipperID">the integer ID of the ShippingOrder</param>
+        /// <param name="shippingorderID">the integer ID of the ShippingOrder</param>
         /// <returns>A single ShippingOrder entity</returns>
-        public ShippingOrder SelectByID(int shipperID)
+        public ShippingOrder SelectByID(int shippingorderID)
         {
-            return repository.Select<ShippingOrder>(c => c.ShipperID == shipperID).FirstOrDefault();
+            return repository.Select<ShippingOrder>(c => c.ShippingOrderID == shippingorderID).FirstOrDefault();
 
         }
 
         /// <summary>
         /// Updates the shippingorders record with applied changes
         /// </summary>
-        /// <param name="shippingorders">The shippingorders record with the shipperID populated that is to be updated.</param>
+        /// <param name="shippingorders">The shippingorders record with the shippingorderID populated that is to be updated.</param>
         /// <returns>The shippingorders record back, unaltered.</returns>
         public ShippingOrder Update(ShippingOrder shippingorders)
         {
@@ -60,10 +60,10 @@ namespace MaterialTracking.BL
         /// <summary>
         /// Changes a shippingorders record of the specified shippingorders ID to be inactive
         /// </summary>
-        /// <param name="shipperID">The integer ID of the shippingorders to make inactive </param>
-        public ShippingOrder SoftDeleteByID(int shipperID)
+        /// <param name="shippingorderID">The integer ID of the shippingorders to make inactive </param>
+        public ShippingOrder SoftDeleteByID(int shippingorderID)
         {
-            ShippingOrder shippingorders = SelectByID(shipperID);
+            ShippingOrder shippingorders = SelectByID(shippingorderID);
             return SoftDelete(shippingorders);
         }
 
