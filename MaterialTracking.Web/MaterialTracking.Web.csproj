@@ -154,12 +154,52 @@
     </Compile>
     <Compile Include="Models\AssemblyProductViewModel.cs" />
     <Compile Include="Models\ZoneViewModel.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\PlaceHolder.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\App_Data\PlaceHolder.txt" />
+    <Content Include="bin\BBS.Repository.dll" />
+    <Content Include="bin\BBS.Repository.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Kendo.Mvc.dll" />
+    <Content Include="bin\Kendo.Mvc.xml" />
+    <Content Include="bin\MaterialTracking.BL.dll" />
+    <Content Include="bin\MaterialTracking.BL.pdb" />
+    <Content Include="bin\MaterialTracking.Types.dll" />
+    <Content Include="bin\MaterialTracking.Types.pdb" />
+    <Content Include="bin\MaterialTracking.Web.dll" />
+    <Content Include="bin\MaterialTracking.Web.pdb" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\ThirdPartyDLLs\Kendo.Mvc.dll" />
+    <Content Include="bin\ThirdPartyDLLs\Kendo.Mvc.xml" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Kendo\Black\editor.png" />
@@ -518,6 +558,12 @@
     <Content Include="Content\Kendo\fonts\DejaVu\DejaVuSerif.ttf" />
     <Content Include="Content\Kendo\images\kendoui.ttf" />
     <Content Include="Content\Kendo\images\kendoui.woff" />
+    <Content Include=".vs\config\applicationhost.config" />
+    <Content Include="bin\BBS.Repository.dll.config" />
+    <Content Include="bin\MaterialTracking.BL.dll.config" />
+    <Content Include="bin\MaterialTracking.Types.dll.config" />
+    <None Include="bin\MaterialTracking.Web.dll.config" />
+    <Content Include="MaterialTracking.Web.csproj.vspscc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1254,6 +1300,7 @@
     <Content Include="Views\Shared\EditorTemplates\AssemblyEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".vs\BBB\v15\" />
     <Folder Include="Content\Bundled\" />
     <Folder Include="Content\images\" />
     <Folder Include="Scripts\Bundled\" />
