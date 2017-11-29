@@ -19,10 +19,6 @@
               // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
               //columns.Bound(a => a.IsActive).Title("Active");
           })
-          .ToolBar(tb =>
-          {
-              tb.Create();
-          })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Sortable()
           .ColumnMenu()
