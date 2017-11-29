@@ -41,5 +41,22 @@
               .Create(create => create.Action("InventoryCreate", "Inventory"))
               .Destroy(destroy => destroy.Action("InventoryDestroy", "Inventory")))
     )
+
+    <div>
+        <a href='@Url.Action("Index", "Product")'>Products</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "Zone")'>Zones</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "OrderDetail")'>Order Details</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "ShippingItem")'>Shipping Items</a>
+    </div>
+
 </div>
 

@@ -40,5 +40,18 @@
               .Create(create => create.Action("POOrderCreate", "POOrder"))
               .Destroy(destroy => destroy.Action("POOrderDestroy", "POOrder")))
     )
+
+    <div>
+        <a href='@Url.Action("Index", "OrderRequest")'>Order Request</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "OrderStatu")'>Order Status</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "POOrderDetail")'>PO Order Details</a>
+    </div>
+
 </div>
 
