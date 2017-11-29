@@ -18,15 +18,6 @@
               //columns.Bound(a => a.ContactName).Title("Contact Name");
               // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
               //columns.Bound(a => a.IsActive).Title("Active");
-              columns.Command(command =>
-              {
-                  command.Edit();
-                  command.Destroy();
-              });
-          })
-          .ToolBar(tb =>
-          {
-              tb.Create();
           })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Sortable()

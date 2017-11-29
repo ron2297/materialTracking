@@ -2,8 +2,6 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\MaterialTrac
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.pdb
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll
-C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.dll
-C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.pdb
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll.config

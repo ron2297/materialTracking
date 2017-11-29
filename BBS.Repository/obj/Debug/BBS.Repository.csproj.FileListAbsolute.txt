@@ -4,7 +4,6 @@ C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\bin\Debug\BBS.Repository.pd
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.dll
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.pdb
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\bin\Debug\MaterialTracking.Types.dll.config
-C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\bin\Debug\EntityFramework.xml
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\obj\Debug\BBS.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\obj\Debug\BBS.Repository.csproj.CoreCompileInputs.cache
 C:\Users\Ron\Desktop\MaterialTracking\BBS.Repository\obj\Debug\BBS.Repository.dll
