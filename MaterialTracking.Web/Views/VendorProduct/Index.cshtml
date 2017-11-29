@@ -42,4 +42,13 @@
               .Create(create => create.Action("VendorProductCreate", "VendorProduct"))
               .Destroy(destroy => destroy.Action("VendorProductDestroy", "VendorProduct")))
     )
+
+    <div>
+        <a href='@Url.Action("Index", "Product")'>Products</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "Vendor")'>Vendors</a>
+    </div>
+
 </div>

@@ -46,4 +46,9 @@
               .Create(create => create.Action("ShipperCreate", "Shipper"))
               .Destroy(destroy => destroy.Action("ShipperDestroy", "Shipper")))
     )
+
+    <div>
+        <a href='@Url.Action("Index", "ShippingOrder")'>Shipping Orders</a>
+    </div>
+
 </div>

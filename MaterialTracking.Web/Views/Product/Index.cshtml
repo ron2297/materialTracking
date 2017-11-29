@@ -47,4 +47,13 @@
               .Create(create => create.Action("ProductCreate", "Product"))
               .Destroy(destroy => destroy.Action("ProductDestroy", "Product")))
           )
+
+    <div>
+        <a href='@Url.Action("Index", "Assembly")'>Assembly Item Products</a>
+    </div>
+
+    <div>
+        <a href='@Url.Action("Index", "Inventory")'>Inventory</a>
+    </div>
+
 </div>
