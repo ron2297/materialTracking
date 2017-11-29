@@ -3,36 +3,114 @@
     ViewBag.Title = "Landing Page";
 }
 
-@Html.ActionLink("Edit Vendor","Index","Vendor")
-<br/>
-@Html.ActionLink("Edit Location", "Index", "Location")
-<br />
-@Html.ActionLink("Edit Product", "Index", "Product")
-<br />
-@Html.ActionLink("Edit Shipper", "Index", "Shipper")
-<br />
-@Html.ActionLink("Edit ShippingItem", "Index", "ShippingItem")
-<br />
-@Html.ActionLink("Edit ShippingOrder", "Index", "ShippingOrder")
-<br />
-@Html.ActionLink("Edit OrderRequest", "Index", "OrderRequest")
-<br />
-@Html.ActionLink("Edit Order Status", "Index", "OrderStatu")
-<br />
-@Html.ActionLink("Edit POOrder", "Index", "POOrder")
-<br />
-@Html.ActionLink("Edit POOrderDetail", "Index", "POOrderDetail")
-<br />
-@Html.ActionLink("Edit Zone", "Index", "Zone")
-<br />
-@Html.ActionLink("Edit ZoneType", "Index", "ZoneType")
-<br/>
-@Html.ActionLink("Edit Inventory", "Index", "Inventory")
-<br/>
-@Html.ActionLink("Edit Order Detail", "Index", "OrderDetail")
-<br/>
-@Html.ActionLink("Edit Vendor Product","Index", "VendorProduct")
-<br />
-@Html.ActionLink("Edit Assembly", "Index", "Assembly")
+<span style="text-align: center"><h2>Material Tracking</h2></span>
+
+
+<div>
+    <div class=".cssGroup" style="padding-bottom: 20px;">
+        <h4>Products and Request</h4>
+        <a href='@Url.Action("Index", "OrderRequest")' class="cssButton">Order Requests</a>
+        <a href='@Url.Action("Index", "Product")' class="cssButton">Product Maintenance</a>
+        <a href='@Url.Action("Index", "Assembly")' class="cssButton">Product Assembly Mainenance</a>
+        <a href='@Url.Action("Index", "Vendor")' class="cssButton">Vendors</a>
+        <a href='@Url.Action("Index", "VendorProduct")' class="cssButton">Associate Vendor To Product</a>
+    </div>
+
+    <div class=".cssGroup" style="padding-bottom: 20px;">
+        <h4>Purchasing</h4>
+        <a href='@Url.Action("Index", "POOrder")' class="cssButton">Edit POOrder</a>
+        <a href='@Url.Action("Index", "POOrderDetail")' class="cssButton">Edit POOrderDetail</a>
+        <a href='@Url.Action("Index", "OrderDetail")' class="cssButton">Edit Order Detail</a>
+    </div>
+
+    <div class=".cssGroup" style="padding-bottom: 20px;">
+        <h4>Receiving</h4>
+        <a href='@Url.Action("Index", "Inventory")' class="cssButton">Inventory</a>
+        <a href='@Url.Action("Index", "Zone")' class="cssButton">Zones</a>
+    </div>
+
+    <div class=".cssGroup" style="padding-bottom: 20px;">
+        <h4>Shipping</h4>
+        <a href='@Url.Action("Index", "Shipper")' class="cssButton">Edit Shipper</a>
+        <a href='@Url.Action("Index", "ShippingItem")' class="cssButton">Edit ShippingItem</a>
+        <a href='@Url.Action("Index", "ShippingOrder")' class="cssButton">Edit ShippingOrder</a>
+        <a href='@Url.Action("Index", "Location")' class="cssButton">Location Maintenance</a>
+    </div>
+
+    <div class=".cssGroup" style="padding-bottom: 20px;">
+        <h4>Maintenance</h4>
+        <a href='@Url.Action("Index", "OrderStatu")' class="cssButton">Order Statuses</a>
+        <a href='@Url.Action("Index", "ZoneType")' class="cssButton">Zone Types</a>
+    </div>
+    
+</div>
+
+<style>
+    .cssGroup {
+        float: left;
+    }
+
+    .cssButton {
+        background-color: #3bb3e0;
+        padding: 10px;
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        text-decoration: none;
+        color: #fff;
+        background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+        background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+        background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+        background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+        background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(44,160,202)), color-stop(1, rgb(62,184,229)) );
+        -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+        -moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+        -o-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+        box-shadow: inset 0px 1px 0px #7fd2f1, 0px 6px 0px #156785;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -o-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+        .cssButton::before {
+            background-color: #072239;
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-bottom: 4px;
+            left: -2px;
+            top: 5px;
+            z-index: -1;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            -o-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0px 1px 0px #fff;
+            -moz-box-shadow: 0px 1px 0px #fff;
+            -o-box-shadow: 0px 1px 0px #fff;
+            box-shadow: 0px 1px 0px #fff;
+        }
+
+        .cssButton:active {
+            color: #156785;
+            text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+            background: rgb(44,160,202);
+            -webkit-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+            -moz-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+            -o-box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+            box-shadow: inset 0px 1px 0px #7fd2f1, inset 0px -1px 0px #156785;
+            top: 7px;
+        }
+
+            .cssButton:active::before {
+                top: -2px;
+            }
+</style>
 
 
