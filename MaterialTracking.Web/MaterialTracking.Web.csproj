@@ -1298,6 +1298,7 @@
     <Content Include="Views\Shared\EditorTemplates\ZoneEditor.cshtml" />
     <Content Include="Views\Assembly\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AssemblyEditor.cshtml" />
+    <Content Include="Views\OrderRequest\EditOrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\BBB\v15\" />

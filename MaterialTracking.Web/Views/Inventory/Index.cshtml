@@ -1,5 +1,4 @@
-﻿
-@using MaterialTracking.Types
+﻿@using MaterialTracking.Types
 @{
     ViewBag.Title = "Inventory Management";
 }
@@ -35,6 +34,8 @@
               .Model(model =>
               {
                   model.Id(p => p.InventoryID);
+                  model.Field(c => c.Product).DefaultValue(new Product());
+                  model.Field(c => c.Zone).DefaultValue(new Zone());
               })
               .Read(read => read.Action("InventorySelectAll", "Inventory"))
               .Update(update => update.Action("InventoryUpdate", "Inventory"))
@@ -59,4 +60,3 @@
     </div>
 
 </div>
-

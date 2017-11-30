@@ -13,6 +13,7 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\obj\Debug\MaterialTrac
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csproj.CoreCompileInputs.cache
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.pdb
+<<<<<<< HEAD
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csprojResolveAssemblyReference.cache
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csproj.CoreCompileInputs.cache
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll.config
@@ -32,14 +33,47 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.BL\obj\Debug\MaterialTrac
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.pdb
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csprojResolveAssemblyReference.cache
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csproj.CoreCompileInputs.cache
+=======
+>>>>>>> 3f3e6bec4d990206233402c22720b02d391e1d9c
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll.config
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.pdb
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll
+<<<<<<< HEAD
+=======
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.SqlServer.dll
+>>>>>>> 3f3e6bec4d990206233402c22720b02d391e1d9c
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.pdb
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll.config
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.pdb
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.dll.config
+<<<<<<< HEAD
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.pdb
+=======
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.xml
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csprojResolveAssemblyReference.cache
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csproj.CoreCompileInputs.cache
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll.config
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.BL.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.SqlServer.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\BBS.Repository.dll.config
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\MaterialTracking.Types.dll.config
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.xml
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\bin\Debug\EntityFramework.SqlServer.xml
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.BL\obj\Debug\MaterialTracking.BL.pdb
+>>>>>>> 3f3e6bec4d990206233402c22720b02d391e1d9c

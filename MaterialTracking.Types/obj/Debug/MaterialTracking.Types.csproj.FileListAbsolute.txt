@@ -9,6 +9,7 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialT
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
 C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+<<<<<<< HEAD
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll.config
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.pdb
@@ -19,6 +20,8 @@ C:\Users\Ron\Desktop\MaterialTracking\MaterialTracking.Types\obj\Debug\MaterialT
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
 \\mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+=======
+>>>>>>> 3f3e6bec4d990206233402c22720b02d391e1d9c
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll.config
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.pdb
@@ -26,7 +29,24 @@ C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.xml
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.xml
+<<<<<<< HEAD
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csprojResolveAssemblyReference.cache
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
 C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+=======
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
+C:\Users\FirstUser\Documents\GitHub\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll.config
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\MaterialTracking.Types.pdb
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.xml
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\bin\Debug\EntityFramework.SqlServer.xml
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.dll
+\\Mac\Home\Documents\SEProject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.pdb
+\\Mac\Home\Documents\seproject\materialTracking\MaterialTracking.Types\obj\Debug\MaterialTracking.Types.csprojResolveAssemblyReference.cache
+>>>>>>> 3f3e6bec4d990206233402c22720b02d391e1d9c
