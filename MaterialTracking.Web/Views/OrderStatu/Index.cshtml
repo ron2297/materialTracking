@@ -8,7 +8,7 @@
           .Columns(columns =>
           {
               columns.Bound(a => a.OrderStatusID).Visible(true);
-              columns.Bound(a => a.StatusName);
+              columns.Bound(a => a.StatusName).Visible(false);
               //columns.Bound(a => a.ItemNumber).Title("ItemNumber");
               //columns.Bound(a => a.AddressLine1).Visible(false);
               //columns.Bound(a => a.AddressLine2).Visible(false);
@@ -31,14 +31,14 @@
               {
                   model.Id(p => p.OrderStatusID);
               })
-              .Read(read => read.Action("OrderStatuSelectAll", "OrderStatu"))
-              .Update(update => update.Action("OrderStatuUpdate", "OrderStatu"))
-              .Create(create => create.Action("OrderStatuCreate", "OrderStatu"))
-              .Destroy(destroy => destroy.Action("OrderStatuDestroy", "OrderStatu")))
+              .Read(read => read.Action("OrderRequestSelectAll", "OrderRequest"))
+              .Update(update => update.Action("OrderRequestUpdate", "OrderRequest"))
+              .Create(create => create.Action("OrderRequestCreate", "OrderRequest"))
+              .Destroy(destroy => destroy.Action("OrderRequestDestroy", "OrderRequest")))
     )
 
     <div>
-        <a href='@Url.Action("Index", "OrderRequests")'>Order Request</a>
+        <a href='@Url.Action("Index", "OrderRequest")'>Order Request</a>
     </div>
 
     <div>
