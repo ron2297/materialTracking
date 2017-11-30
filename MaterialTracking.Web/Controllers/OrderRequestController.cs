@@ -17,8 +17,12 @@ namespace MaterialTracking.Web.Controllers
             return View();
         }
 
-        public ActionResult Hello()
+        public ActionResult EditOrderDetails(int id)
         {
+
+            BL.OrderRequests blOrderRequests = new BL.OrderRequests();
+            OrderRequest request = blOrderRequests.SelectByID(id);
+            ViewBag.OrderRequestID = id;
             return View();
         }
 

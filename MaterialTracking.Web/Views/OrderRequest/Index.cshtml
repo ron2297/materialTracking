@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Product Management";
 }
+<script>
+    function ViewOrderDetails(OrderRequestID) {
+        var url = '@Url.Action("EditOrderDetails", "OrderRequest")/' + OrderRequestID;
+        window.location = url;
+    }
+
+</script>
 <div style="height: 100%;">
     @(Html.Kendo().Grid<OrderRequest>()
           .Name("gridModules")
@@ -11,6 +18,9 @@
               columns.Bound(a => a.OrderRequestID);
               columns.Bound(a => a.DateOrdered);
               columns.Bound(a => a.OrderStatusID);
+              columns.Template(@<text></text>).ClientTemplate(
+                  "<a href='javascript:ViewOrderDetails(#=OrderRequestID#);' class='k-button k-button-icontext'>View Order Details</a>")
+                          .HtmlAttributes(new { style = "text-align:left;" }).Width(180);
               columns.Command(command =>
               {
                   command.Edit();
@@ -32,12 +42,13 @@
               .Model(model =>
               {
                   model.Id(p => p.OrderRequestID);
+
               })
               .Read(read => read.Action("OrderRequestSelectAll", "OrderRequest"))
               .Update(update => update.Action("OrderRequestUpdate", "OrderRequest"))
               .Create(create => create.Action("OrderRequestCreate", "OrderRequest"))
               .Destroy(destroy => destroy.Action("OrderRequestDestroy", "OrderRequest")))
-          )
+    )
 
     <div>
         <a href='@Url.Action("Index", "OrderDetail")'>Order Details</a>

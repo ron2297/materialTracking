@@ -36,6 +36,8 @@
               .Model(model =>
               {
                   model.Id(p => p.VendorID);
+                  model.Field(c => c.Product).DefaultValue(new Product());
+                  model.Field(c => c.Vendor).DefaultValue(new Vendor());
               })
               .Read(read => read.Action("VendorProductSelectAll", "VendorProduct"))
               .Update(update => update.Action("VendorProductUpdate", "VendorProduct"))

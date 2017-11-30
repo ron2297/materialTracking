@@ -288,3 +288,13 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+
+./MaterialTracking.Web/bin
+./MaterialTracking.Web/obj
+./MaterialTracking.Types/bin
+./MaterialTracking.Types/obj
+./MaterialTracking.BL/bin
+./MaterialTracking.BL/obj
+./BBS.Repository/bin
+./BBS.Repository/obj

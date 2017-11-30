@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Inventory Management";
 }
+
 <div style="height: 100%;">
     @(Html.Kendo().Grid<Inventory>()
           .Name("gridModules")
@@ -35,6 +36,8 @@
               .Model(model =>
               {
                   model.Id(p => p.InventoryID);
+                  model.Field(c => c.Product).DefaultValue(new Product());
+                  model.Field(c => c.Zone).DefaultValue(new Zone());
               })
               .Read(read => read.Action("InventorySelectAll", "Inventory"))
               .Update(update => update.Action("InventoryUpdate", "Inventory"))

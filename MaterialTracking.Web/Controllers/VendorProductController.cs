@@ -21,7 +21,7 @@ namespace MaterialTracking.Web.Controllers
         #region AJAX Actions
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductXRefSelectAll([DataSourceRequest] DataSourceRequest request)
+        public ActionResult VendorProductSelectAll([DataSourceRequest] DataSourceRequest request)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
             List<VendorProductXRef> model = blVendorProductXRefs.SelectAll();
@@ -29,7 +29,7 @@ namespace MaterialTracking.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductXRefUpdate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductUpdate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
             VendorProductXRef model = blVendorProductXRefs.Update(vendor);
@@ -37,7 +37,7 @@ namespace MaterialTracking.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductXRefCreate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductCreate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
             VendorProductXRef model = blVendorProductXRefs.Insert(vendor);
@@ -45,7 +45,7 @@ namespace MaterialTracking.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductXRefDestroy([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductDestroy([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
             VendorProductXRef model = blVendorProductXRefs.SoftDelete(vendor);
