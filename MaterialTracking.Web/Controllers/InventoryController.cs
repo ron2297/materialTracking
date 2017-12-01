@@ -31,6 +31,7 @@ namespace MaterialTracking.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult InventoryUpdate([DataSourceRequest] DataSourceRequest request, Inventory inventory)
         {
+            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
             Inventory newItem = new Inventory
             {
                 InventoryID = inventory.InventoryID,
@@ -38,7 +39,6 @@ namespace MaterialTracking.Web.Controllers
                 ZoneID = inventory.ZoneID,
                 Quantity = inventory.Quantity
             };
-            BL.InventoryClass blInventoryClass = new BL.InventoryClass();
             Inventory model = blInventoryClass.Update(inventory);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
@@ -47,7 +47,14 @@ namespace MaterialTracking.Web.Controllers
         public ActionResult InventoryCreate([DataSourceRequest] DataSourceRequest request, Inventory inventory)
         {
             BL.InventoryClass blInventoryClass = new BL.InventoryClass();
-            Inventory model = blInventoryClass.Insert(inventory);
+            Inventory newItem = new Inventory
+            {
+                InventoryID = inventory.InventoryID,
+                ProductID = inventory.ProductID,
+                ZoneID = inventory.ZoneID,
+                Quantity = inventory.Quantity
+            };
+            Inventory model = blInventoryClass.Insert(newItem);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 

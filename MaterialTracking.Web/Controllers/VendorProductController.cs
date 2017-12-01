@@ -29,26 +29,38 @@ namespace MaterialTracking.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductUpdate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductUpdate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendorproduct)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
-            VendorProductXRef model = blVendorProductXRefs.Update(vendor);
+            VendorProductXRef item = new VendorProductXRef
+            {
+                VendorID = vendorproduct.VendorID,
+                ProductID = vendorproduct.ProductID,
+                IsActive = vendorproduct.IsActive
+            };
+            VendorProductXRef model = blVendorProductXRefs.Update(item);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductCreate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductCreate([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendorproduct)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
-            VendorProductXRef model = blVendorProductXRefs.Insert(vendor);
+            VendorProductXRef item = new VendorProductXRef
+            {
+                VendorID = vendorproduct.VendorID,
+                ProductID = vendorproduct.ProductID,
+                IsActive = vendorproduct.IsActive
+            };
+            VendorProductXRef model = blVendorProductXRefs.Insert(item);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult VendorProductDestroy([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendor)
+        public ActionResult VendorProductDestroy([DataSourceRequest] DataSourceRequest request, VendorProductXRef vendorproduct)
         {
             BL.VendorProductXRefs blVendorProductXRefs= new BL.VendorProductXRefs();
-            VendorProductXRef model = blVendorProductXRefs.SoftDelete(vendor);
+            VendorProductXRef model = blVendorProductXRefs.SoftDelete(vendorproduct);
             return Json(new[] { model }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 

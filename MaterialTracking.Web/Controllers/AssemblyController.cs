@@ -30,9 +30,6 @@ namespace MaterialTracking.Web.Controllers
 
         #region AJAX Actions
 
-
-
-
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ProductSelectAll([DataSourceRequest] DataSourceRequest request)
         {

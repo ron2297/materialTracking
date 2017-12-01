@@ -3,5 +3,161 @@
     ViewBag.Title = "EditOrderDetails";
 }
 
-<h2>EditOrderDetails</h2>
+<script type="text/javascript">
+
+    function AddProduct(productID, productName) {
+        var exists = false;
+        var grid = $("#gridAssemblyProduct").data("kendoGrid");
+        var dataItem = grid.dataSource.get(productID);
+
+        if (dataItem != null && dataItem != 'undefined') {
+            exists = true;
+        }
+
+        if (exists) {
+            UpdateQuantity(dataItem);
+        } else {
+            InsertNewProduct(productID, productName);
+        }
+        $("#dirty").show();
+    }
+
+    function InsertNewProduct(productID, productName) {
+        var grid = $("#gridAssemblyProduct").data("kendoGrid");
+        var id = @ViewBag.AssemblyItemID;
+        var newRecord = ({
+            AssemblyItemID: id,
+            IsActive: true,
+            ProductID: productID,
+            ProductName: productName,
+            Quantity: 1
+        });
+        grid.dataSource.insert(newRecord).set("dirty", true);
+    }
+
+
+    function UpdateQuantity(dataItem) {
+        dataItem.Quantity = dataItem.Quantity + 1;
+        dataItem.AssemblyItemID = @ViewBag.AssemblyItemID;
+        dataItem.dirty = true;
+
+        var grid = $("#gridAssemblyProduct").data("kendoGrid");
+        grid.refresh();
+    }
+
+    function ReadParameter() {
+        var parm =
+            {
+                id: @ViewBag.AssemblyItemID
+        };
+        return parm;
+    }
+
+    function SaveBatch(e) {
+        var grid = $('#gridAssemblyProduct').data("kendoGrid");
+        grid.saveChanges();
+        $('#dirty').text = 'SAVED';
+        CancelBatch();
+    }
+
+    function CancelBatch() {
+        var url = '@Url.Action("Index","Assembly")';
+        window.location = url;
+    }
+
+
+</script>
+
+
+<table style="width:100%;">
+    <tr>
+        <td width="50%" valign="top" style="text-align: center;">
+            <div>
+                <label style="font-size: 20px; font-weight: bold;">@ViewBag.AssemblyName</label>
+            </div>
+        </td>
+        <td width="50%" valign="top" style="text-align: center;">
+            <div>
+                <a href='javascript:SaveBatch();' class='k-button k-button-icontext'>Save</a>
+                <a href='javascript:CancelBatch();' class='k-button k-button-icontext' style="padding-left: 20px;">Cancel</a>
+            </div>
+            <div>
+                <label id="dirty" style="color: darkred; font-weight: bold; display: none; margin-left: 50px;">Warning, Record not saved.</label>&nbsp;
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;" width="50%">
+            <div style="margin:10px;">
+                Available Products
+            </div>
+            <div data-container-for="Products" style="margin:10px; height: 500px;">
+                @(Html.Kendo().Grid<Product>()
+                         .Name("gridProduct")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(a => a.ProductID).Visible(false);
+                              columns.Bound(a => a.Name).Title("Product");
+                              columns.Template(@<text></text>).ClientTemplate(
+                                                         "<a href='javascript:AddProduct(#=ProductID#, \"#=Name#\");' class='k-button k-button-icontext'>Add =></a>")
+                          .HtmlAttributes(new { style = "text-align:left;" }).Width(100);
+
+                          })
+                      .Sortable()
+                      .ColumnMenu()
+                      .Scrollable()
+                      .Filterable()
+                      .HtmlAttributes(new { style = "height: 100%;" })
+                      .DataSource(dataSource => dataSource
+                          .Ajax()
+                          .ServerOperation(true)
+                          .Model(m =>
+                          {
+                              m.Id(c => c.ProductID);
+                              m.Field(c => c.Name);
+                          })
+                      .Read(read => read.Action("ProductSelectAll", "Assembly"))
+                         ) )
+
+            </div>
+        </td>
+        <td style="vertical-align: top;" width="50%">
+            <div style="margin:10px">
+                Order Details 
+            </div>
+            <div data-container-for="OrderDetails" style="margin:10px; height: 500px;">
+                @(Html.Kendo().Grid<OrderDetailsViewModel>()
+                         .Name("gridAssemblyProduct")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(a => a.ProductID).Visible(false);
+                              columns.Bound(a => a.ProductName).Title("Product").Width(150);
+                              columns.Bound(a => a.Quantity).Title("Quantity").Width(100);
+                              columns.Bound(a => a.IsActive).Visible(false);
+                          })
+                      .Sortable()
+                      .ColumnMenu()
+                      .Filterable()
+                      .Scrollable()
+                      .Editable(editable => editable.Mode(GridEditMode.InCell))
+                      .HtmlAttributes(new { style = "height: 100%;" })
+                      .DataSource(dataSource => dataSource
+                          .Ajax()
+                          .Batch(true)
+                          .ServerOperation(false)
+                          .Model(m =>
+                          {
+                              m.Id(c => c.OrderID);
+                              m.Id(c => c.ProductID);
+                              m.Field(c => c.ProductName).Editable(false);
+                              m.Field(c => c.Quantity).Editable(true);
+                          })
+                          .Read(read => read.Action("OrderDetailsSelectAll", "OrderDetails").Data("ReadParameter"))
+                          .Update(update => update.Action("OrderDetailsUpdate", "OrderDetails"))
+                          .Create(create => create.Action("OrderDetailsUpdate", "OrderDetails"))
+                ))
+            </div>
+        </td>
+    </tr>
+</table>
 
