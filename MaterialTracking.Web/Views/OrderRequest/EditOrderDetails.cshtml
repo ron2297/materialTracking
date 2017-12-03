@@ -1,4 +1,6 @@
-﻿
+﻿@using Kendo.Mvc.UI
+@using MaterialTracking.Types
+@using MaterialTracking.Web.Models
 @{
     ViewBag.Title = "EditOrderDetails";
 }
@@ -7,7 +9,7 @@
 
     function AddProduct(productID, productName) {
         var exists = false;
-        var grid = $("#gridAssemblyProduct").data("kendoGrid");
+        var grid = $("#gridOrderDetails").data("kendoGrid");
         var dataItem = grid.dataSource.get(productID);
 
         if (dataItem != null && dataItem != 'undefined') {
@@ -23,10 +25,10 @@
     }
 
     function InsertNewProduct(productID, productName) {
-        var grid = $("#gridAssemblyProduct").data("kendoGrid");
-        var id = @ViewBag.AssemblyItemID;
+        var grid = $("#gridOrderDetails").data("kendoGrid");
+        var id = @ViewBag.OrderRequestID;
         var newRecord = ({
-            AssemblyItemID: id,
+            OrderDetailID: id,
             IsActive: true,
             ProductID: productID,
             ProductName: productName,
@@ -38,30 +40,30 @@
 
     function UpdateQuantity(dataItem) {
         dataItem.Quantity = dataItem.Quantity + 1;
-        dataItem.AssemblyItemID = @ViewBag.AssemblyItemID;
+        dataItem.OrderDetailID = @ViewBag.OrderDetailID;
         dataItem.dirty = true;
 
-        var grid = $("#gridAssemblyProduct").data("kendoGrid");
+        var grid = $("#gridOrderDetails").data("kendoGrid");
         grid.refresh();
     }
 
     function ReadParameter() {
         var parm =
             {
-                id: @ViewBag.AssemblyItemID
+                id: @ViewBag.OrderDetailID
         };
         return parm;
     }
 
     function SaveBatch(e) {
-        var grid = $('#gridAssemblyProduct').data("kendoGrid");
+        var grid = $('#gridOrderDetails').data("kendoGrid");
         grid.saveChanges();
         $('#dirty').text = 'SAVED';
         CancelBatch();
     }
 
     function CancelBatch() {
-        var url = '@Url.Action("Index","Assembly")';
+        var url = '@Url.Action("Index","OrderRequest")';
         window.location = url;
     }
 
@@ -73,7 +75,7 @@
     <tr>
         <td width="50%" valign="top" style="text-align: center;">
             <div>
-                <label style="font-size: 20px; font-weight: bold;">@ViewBag.AssemblyName</label>
+                <label style="font-size: 20px; font-weight: bold;">@ViewBag.OrderRequestID</label>
             </div>
         </td>
         <td width="50%" valign="top" style="text-align: center;">
@@ -116,7 +118,7 @@
                               m.Id(c => c.ProductID);
                               m.Field(c => c.Name);
                           })
-                      .Read(read => read.Action("ProductSelectAll", "Assembly"))
+                      .Read(read => read.Action("ProductSelectAll", "OrderRequest"))
                          ) )
 
             </div>
@@ -127,7 +129,7 @@
             </div>
             <div data-container-for="OrderDetails" style="margin:10px; height: 500px;">
                 @(Html.Kendo().Grid<OrderDetailsViewModel>()
-                         .Name("gridAssemblyProduct")
+                         .Name("gridOrderDetails")
                           .Columns(columns =>
                           {
                               columns.Bound(a => a.ProductID).Visible(false);
@@ -147,14 +149,14 @@
                           .ServerOperation(false)
                           .Model(m =>
                           {
-                              m.Id(c => c.OrderID);
+                              m.Id(c => c.OrderRequestID);
                               m.Id(c => c.ProductID);
                               m.Field(c => c.ProductName).Editable(false);
                               m.Field(c => c.Quantity).Editable(true);
                           })
-                          .Read(read => read.Action("OrderDetailsSelectAll", "OrderDetails").Data("ReadParameter"))
-                          .Update(update => update.Action("OrderDetailsUpdate", "OrderDetails"))
-                          .Create(create => create.Action("OrderDetailsUpdate", "OrderDetails"))
+                          .Read(read => read.Action("OrderDetailsSelectAll", "OrderRequest").Data("ReadParameter"))
+                          .Update(update => update.Action("OrderDetailsUpdate", "OrderRequest"))
+                          .Create(create => create.Action("OrderDetailsUpdate", "OrderRequest"))
                 ))
             </div>
         </td>
