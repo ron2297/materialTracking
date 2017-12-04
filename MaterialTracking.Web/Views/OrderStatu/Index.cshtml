@@ -19,14 +19,6 @@
               // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
               //columns.Bound(a => a.IsActive).Title("Active");
           })
-          .ToolBar(tb =>
-          {
-              tb.Create();
-          })
-          .Editable(editable => editable.Mode(GridEditMode.PopUp))
-          .Sortable()
-          .ColumnMenu()
-          .Filterable()
           .AutoBind(true)
           .HtmlAttributes(new { style = "height: 100%;" })
           .DataSource(dataSource => dataSource
@@ -37,8 +29,7 @@
               })
               .Read(read => read.Action("OrderStatuSelectAll", "OrderStatu"))
               .Update(update => update.Action("OrderStatuUpdate", "OrderStatu"))
-              .Create(create => create.Action("OrderStatuCreate", "OrderStatu"))
-              .Destroy(destroy => destroy.Action("OrderStatuDestroy", "OrderStatu")))
+              .Create(create => create.Action("OrderStatuCreate", "OrderStatu")))
     )
 
     <div>
