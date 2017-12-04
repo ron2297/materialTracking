@@ -8,7 +8,7 @@
           .Columns(columns =>
           {
               columns.Bound(a => a.OrderStatusID).Visible(true);
-              columns.Bound(a => a.StatusName).Visible(false);
+              columns.Bound(a => a.StatusName).Visible(true);
               //columns.Bound(a => a.ItemNumber).Title("ItemNumber");
               //columns.Bound(a => a.AddressLine1).Visible(false);
               //columns.Bound(a => a.AddressLine2).Visible(false);
@@ -18,6 +18,10 @@
               //columns.Bound(a => a.ContactName).Title("Contact Name");
               // columns.Bound(a => a.ContactPhone).Title("Contact Phone");
               //columns.Bound(a => a.IsActive).Title("Active");
+          })
+          .ToolBar(tb =>
+          {
+              tb.Create();
           })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Sortable()
@@ -31,10 +35,10 @@
               {
                   model.Id(p => p.OrderStatusID);
               })
-              .Read(read => read.Action("OrderRequestSelectAll", "OrderRequest"))
-              .Update(update => update.Action("OrderRequestUpdate", "OrderRequest"))
-              .Create(create => create.Action("OrderRequestCreate", "OrderRequest"))
-              .Destroy(destroy => destroy.Action("OrderRequestDestroy", "OrderRequest")))
+              .Read(read => read.Action("OrderStatuSelectAll", "OrderStatu"))
+              .Update(update => update.Action("OrderStatuUpdate", "OrderStatu"))
+              .Create(create => create.Action("OrderStatuCreate", "OrderStatu"))
+              .Destroy(destroy => destroy.Action("OrderStatuDestroy", "OrderStatu")))
     )
 
     <div>
