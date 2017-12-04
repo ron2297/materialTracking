@@ -19,7 +19,7 @@ namespace MaterialTracking.Web.Controllers
         #region AJAX Actions
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult OrderStatusSelectAll([DataSourceRequest] DataSourceRequest request)
+        public ActionResult OrderStatuSelectAll([DataSourceRequest] DataSourceRequest request)
         {
             BL.OrderStatus blOrderStatus = new BL.OrderStatus();
             List<OrderStatu> model = blOrderStatus.SelectAll();
